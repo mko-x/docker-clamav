@@ -10,11 +10,11 @@ is listening on exposed port `3310`.
 
 ##Usage
 
-    docker run -d -p 3310:3310 mkodockx/clamav
+    docker run -d -p 3310:3310 mkodockx/docker-clamav
     
 or linked (recommended)
 
-    docker run -d --name av mkodockx/clamav
+    docker run -d --name av mkodockx/docker-clamav
     docker run -d --link av:clamavd application-with-clamdscan-or-something
 
 ##More Info
