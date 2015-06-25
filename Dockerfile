@@ -1,14 +1,17 @@
 FROM debian:latest
 MAINTAINER https://m-ko-x.de Markus Kosmal <code@m-ko-x.de>
 
+# set ClamAV version to use
+ENV AV_VERSION 0.98.7
+
 # initial install of av daemon
 RUN echo "deb http://http.debian.net/debian/ wheezy main contrib non-free" > /etc/apt/sources.list && \
     echo "deb http://http.debian.net/debian/ wheezy-updates main contrib non-free" >> /etc/apt/sources.list && \
     echo "deb http://security.debian.org/ wheezy/updates main contrib non-free" >> /etc/apt/sources.list && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        clamav-daemon \
-        clamav-freshclam \
+        clamav-daemon=${AV_VERSION}* \
+        clamav-freshclam=${AV_VERSION}* \
         libclamunrar6 \
         wget && \
     apt-get clean && \
