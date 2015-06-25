@@ -2,28 +2,28 @@
 # bootstrap clam av service and clam av database updater
 set -m
 
-# start em in background
+# start in background
 freshclam -d &
 clamd &
 
 # recognize PIDs
-pids=`jobs -p`
+pidlist=`jobs -p`
 
-# initialize result var
-exitcode=0
+# initialize latest result var
+latest_exit=0
 
 # define shutdown helper
 function shutdown() {
     trap "" SUBS
 
-    for pid in $pids; do
-        if ! kill -0 $pid 2>/dev/null; then
-            wait $pid
+    for single in $pidlist; do
+        if ! kill -0 $pidlist 2>/dev/null; then
+            wait $pidlist
             exitcode=$?
         fi
     done
 
-    kill $pids 2>/dev/null
+    kill $pidlist 2>/dev/null
 }
 
 # run shutdown
@@ -31,4 +31,4 @@ trap terminate SUBS
 wait
 
 # return received result
-exit $exitcode
+exit $latest_exit
