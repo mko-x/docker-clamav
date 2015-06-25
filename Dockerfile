@@ -1,4 +1,4 @@
-FROM debian:wheezy
+FROM debian:latest
 MAINTAINER https://m-ko-x.de Markus Kosmal <code@m-ko-x.de>
 
 # initial install of av daemon
