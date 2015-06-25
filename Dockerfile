@@ -9,7 +9,7 @@ RUN echo "deb http://http.debian.net/debian/ wheezy main contrib non-free" > /et
     echo "deb http://http.debian.net/debian/ wheezy-updates main contrib non-free" >> /etc/apt/sources.list && \
     echo "deb http://security.debian.org/ wheezy/updates main contrib non-free" >> /etc/apt/sources.list && \
     apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y -qq \
         clamav-daemon=${AV_VERSION}* \
         clamav-freshclam=${AV_VERSION}* \
         libclamunrar6 \
