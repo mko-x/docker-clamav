@@ -1,6 +1,6 @@
 # docker-clamav
 
-![ClamAV 0.99](https://img.shields.io/badge/ClamAV-0.99.2-brightgreen.svg?style=flat-square)
+![ClamAV latest.stable](https://img.shields.io/badge/ClamAV-latest.stable-brightgreen.svg?style=flat-square)
 
 ##About
 Dockerized open source antivirus for use with file sharing containers.
