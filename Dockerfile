@@ -2,7 +2,7 @@ FROM debian:latest
 MAINTAINER https://m-ko-x.de Markus Kosmal <code@m-ko-x.de>
 
 # set ClamAV version to use
-ENV AV_VERSION 0.98.7
+ENV AV_VERSION 0.99.2
 
 # initial install of av daemon
 RUN echo "deb http://http.debian.net/debian/ wheezy main contrib non-free" > /etc/apt/sources.list && \
