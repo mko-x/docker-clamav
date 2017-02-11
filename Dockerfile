@@ -1,9 +1,5 @@
 FROM debian:latest
-MAINTAINER https://m-ko-x.de Markus Kosmal <code@m-ko-x.de>
-
-# DEPRECATED
-# set ClamAV version to use
-# ENV AV_VERSION 0.99
+MAINTAINER https://m-ko.de Markus Kosmal <code@cnfg.io>
 
 # Debian Base to use
 ENV DEBIAN_VERSION jessie
