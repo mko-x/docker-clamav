@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:jessie
 MAINTAINER https://m-ko.de Markus Kosmal <code@cnfg.io>
 
 # Debian Base to use
