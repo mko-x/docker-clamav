@@ -28,7 +28,7 @@ function shutdown() {
 }
 
 # run shutdown
-trap terminate SIGINT
+trap shutdown SIGINT
 wait
 
 # return received result
