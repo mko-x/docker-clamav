@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER https://m-ko.de Markus Kosmal <code@cnfg.io>
+MAINTAINER http://m-ko.de Markus Kosmal <dude@m-ko.de>
 
 # Debian Base to use
 ENV DEBIAN_VERSION jessie
