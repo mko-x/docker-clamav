@@ -1,5 +1,7 @@
 # docker-clamav
 
+There are problems at the moment as the downloads from clamav main database are lasting too long for build execution timeout of the docker public build.
+
 ![ClamAV latest.stable](https://img.shields.io/badge/ClamAV-latest.stable-brightgreen.svg?style=flat-square)
 
 ## About
