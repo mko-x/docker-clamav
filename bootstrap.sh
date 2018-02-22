@@ -20,7 +20,7 @@ function shutdown() {
     for single in $pidlist; do
         if ! kill -0 $pidlist 2>/dev/null; then
             wait $pidlist
-            exitcode=$?
+            latest_exit=$?
         fi
     done
 
