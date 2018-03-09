@@ -1,6 +1,6 @@
 #!/bin/bash
 # bootstrap clam av service and clam av database updater shell script
-# presented by mko (Markus Kosmal<code@cnfg.io>)
+# presented by mko (Markus Kosmal<dude@m-ko.de>)
 set -m
 
 # start clam service itself and the updater in background as daemon
