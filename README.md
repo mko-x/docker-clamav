@@ -6,10 +6,9 @@
 
 ## About
 Dockerized open source antivirus daemons for use with 
-- file sharing containers or 
-- to use it via a [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) proxy like
- - @solita made [clamav-rest](https://github.com/solita/clamav-rest)
- - @lokori forked [clamav-rest](https://hub.docker.com/r/lokori/clamav-rest/).
+- file sharing containers like [ownCloud](https://hub.docker.com/_/owncloud/) or 
+- to use it via a [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) proxy like [@solita](https://github.com/solita) made [clamav-rest](https://github.com/solita/clamav-rest) or
+- to directly connect to *clamav* via TCP port `3310`
 
 ## Description
 ClamAV daemon as a Docker image. It *builds* with a current virus database and
