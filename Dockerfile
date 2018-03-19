@@ -37,6 +37,9 @@ RUN sed -i 's/^MaxScanSize .*$/MaxScanSize 4000M/g' /etc/clamav/clamd.conf && \
     sed -i 's/^MaxFileSize .*$/MaxFileSize 4000M/g' /etc/clamav/clamd.conf && \
     sed -i 's/^StreamMaxLength .*$/StreamMaxLength 4000M/g' /etc/clamav/clamd.conf
 
+# Block encrypted files
+RUN sed -i 's/^ArchiveBlockEncrypted .*$/ArchiveBlockEncrypted true/g' /etc/clamav/clamd.conf
+
 # volume provision
 VOLUME ["/var/lib/clamav"]
 
