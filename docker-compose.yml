@@ -1,0 +1,32 @@
+# example docker-compose configuration file for using docker-clamav
+version: "3"
+services:
+  antivirus:
+    image: mkodockx/docker-clamav
+    ports:
+      - "3310"
+    networks:
+      - backend
+
+  owncloud:
+    image: owncloud
+    restart: always
+    links:
+      - av:antivirus
+    ports:
+      - 8080:80
+    networks:
+      - backend
+      - frontend
+
+  mysql:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    networks:
+      - backend
+
+networks:
+  backend:
+  frontend:
