@@ -18,8 +18,8 @@ function shutdown() {
     trap "" SIGINT
 
     for single in $pidlist; do
-        if ! kill -0 $pidlist 2>/dev/null; then
-            wait $pidlist
+        if ! kill -0 $single 2>/dev/null; then
+            wait $single
             latest_exit=$?
         fi
     done
