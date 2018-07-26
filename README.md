@@ -12,7 +12,7 @@ Dockerized open source antivirus daemons for use with
 
 ## Description
 ClamAV daemon as a Docker image. It *builds* with a current virus database and
-*runs* `freshclam` in the background constantly updating the virus signature database. `clamd`
+*runs* `freshclam` in the background constantly updating the virus signature database. `clamd` itself
 is listening on exposed port `3310`.
 
 ## Usage
