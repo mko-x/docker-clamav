@@ -29,7 +29,7 @@ function shutdown() {
 
 # run shutdown
 trap shutdown SIGINT
-wait
+wait -n
 
 # return received result
 exit $latest_exit
