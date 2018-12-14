@@ -1,0 +1,4 @@
+---
+applications:
+  - docker: quay.io/uktrade/docker-clamav:develop
+  
