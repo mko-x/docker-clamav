@@ -1,4 +1,4 @@
-# example docker-compose configuration file for using docker-clamav
+# example docker-compose configuration file for using mkodockx/docker-clamav
 version: "3"
 services:
   antivirus:
