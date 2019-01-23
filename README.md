@@ -26,7 +26,7 @@ or linked (recommended)
     
 ## docker-compose
 
-See example with OwnCloud at [docker-compose.yml](docker-compose.yml).
+See example with OwnCloud at [docker-compose.yml](https://github.com/mko-x/docker-clamav/blob/master/docker-compose.yml).
 
 ## More Info
 Inspired by work of [dinkel](https://github.com/dinkel)
