@@ -1,8 +1,8 @@
-FROM debian:stretch-slim
+FROM debian:jessie
 LABEL author="http://m-ko.de Markus Kosmal <dude@m-ko.de>"
 
 # Debian Base to use
-ENV DEBIAN_VERSION stretch
+ENV DEBIAN_VERSION jessie
 
 # initial install of av daemon
 RUN echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION main contrib non-free" > /etc/apt/sources.list && \
