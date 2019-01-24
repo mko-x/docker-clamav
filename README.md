@@ -15,6 +15,9 @@ ClamAV daemon as a Docker image. It *builds* with a current virus database and
 *runs* `freshclam` in the background constantly updating the virus signature database. `clamd` itself
 is listening on exposed port `3310`.
 
+## Releases
+Find the latest releases at the [releases](https://github.com/mko-x/docker-clamav/releases) section here in the repository.
+
 ## Usage
 
     docker run -d -p 3310:3310 mkodockx/docker-clamav
