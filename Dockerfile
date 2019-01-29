@@ -1,8 +1,8 @@
-FROM debian:jessie
-MAINTAINER https://m-ko.de Markus Kosmal <code@cnfg.io>
+FROM debian:stretch-slim
+LABEL author="http://m-ko.de Markus Kosmal <dude@m-ko.de>"
 
 # Debian Base to use
-ENV DEBIAN_VERSION jessie
+ENV DEBIAN_VERSION stretch
 
 # initial install of av daemon
 RUN echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION main contrib non-free" > /etc/apt/sources.list && \
@@ -36,6 +36,9 @@ RUN sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/clamd.conf && \
 RUN sed -i 's/^MaxScanSize .*$/MaxScanSize 4000M/g' /etc/clamav/clamd.conf && \
     sed -i 's/^MaxFileSize .*$/MaxFileSize 4000M/g' /etc/clamav/clamd.conf && \
     sed -i 's/^StreamMaxLength .*$/StreamMaxLength 4000M/g' /etc/clamav/clamd.conf
+
+# Block encrypted files
+RUN sed -i 's/^ArchiveBlockEncrypted .*$/ArchiveBlockEncrypted true/g' /etc/clamav/clamd.conf
 
 # volume provision
 VOLUME ["/var/lib/clamav"]
