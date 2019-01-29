@@ -1,5 +1,5 @@
 ---
 applications:
   - docker:
-      image: quay.io/uktrade/docker-clamav:develop
+      image: quay.io/uktrade/docker-clamav:latest
   
