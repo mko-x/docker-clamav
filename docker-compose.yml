@@ -1,0 +1,42 @@
+# example docker-compose configuration file for using mkodockx/docker-clamav
+version: "3"
+services:
+  av:
+    image: mkodockx/docker-clamav
+    networks:
+      - backend
+
+  app:
+    image: nextcloud:fpm-alpine
+    restart: always
+    links:
+      - av:av
+    depends_on: 
+      - mysql
+    volumes:
+      - nextcloud:/var/www/html
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: 
+    ports:
+      - 8080:80
+    networks:
+      - backend
+      - frontend
+
+  mysql:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: 
+    networks:
+      - backend
+
+networks:
+  backend:
+  frontend:

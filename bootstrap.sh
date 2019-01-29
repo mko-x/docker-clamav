@@ -1,6 +1,6 @@
 #!/bin/bash
 # bootstrap clam av service and clam av database updater shell script
-# presented by mko (Markus Kosmal<code@cnfg.io>)
+# presented by mko (Markus Kosmal<dude@m-ko.de>)
 set -m
 
 # start clam service itself and the updater in background as daemon
@@ -15,12 +15,12 @@ latest_exit=0
 
 # define shutdown helper
 function shutdown() {
-    trap "" SUBS
+    trap "" SIGINT
 
     for single in $pidlist; do
-        if ! kill -0 $pidlist 2>/dev/null; then
-            wait $pidlist
-            exitcode=$?
+        if ! kill -0 $single 2>/dev/null; then
+            wait $single
+            latest_exit=$?
         fi
     done
 
@@ -28,8 +28,8 @@ function shutdown() {
 }
 
 # run shutdown
-trap terminate SUBS
-wait
+trap shutdown SIGINT
+wait -n
 
 # return received result
 exit $latest_exit
