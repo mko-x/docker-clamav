@@ -4,6 +4,9 @@
 
 ![ClamAV latest.stable](https://img.shields.io/badge/ClamAV-latest.stable-brightgreen.svg?style=flat-square)
 
+## Hub
+Find new hub image: https://cloud.docker.com/repository/docker/mk0x/docker-clamav
+
 ## About
 Dockerized open source antivirus daemons for use with 
 - file sharing containers like [Nextcloud](https://hub.docker.com/_/nextcloud/) or 
@@ -20,11 +23,11 @@ Find the latest releases at the [releases](https://github.com/mko-x/docker-clama
 
 ## Usage
 
-    docker run -d -p 3310:3310 mkodockx/docker-clamav
+    docker run -d -p 3310:3310 mk0x/docker-clamav
 
 or linked (recommended)
 
-    docker run -d --name av mkodockx/docker-clamav
+    docker run -d --name av mk0x/docker-clamav
     docker run -d --link av:av application-with-clamdscan-or-something
     
 ## docker-compose
