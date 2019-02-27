@@ -1,5 +1,5 @@
 FROM debian:stretch-slim
-LABEL author="http://m-ko.de Markus Kosmal <dude@m-ko.de>"
+LABEL maintainer="Markus Kosmal <dude@m-ko.de> https://m-ko.de"
 
 # Debian Base to use
 ENV DEBIAN_VERSION stretch
