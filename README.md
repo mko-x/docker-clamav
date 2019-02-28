@@ -21,6 +21,10 @@ is listening on exposed port `3310`.
 ## Releases
 Find the latest releases at the [releases](https://github.com/mko-x/docker-clamav/releases) section here in the repository.
 
+## Known Forks
+
+- OpenShift support in [kuanfandevops fork](https://github.com/kuanfandevops/docker-clamav)
+
 ## Usage
 
     docker run -d -p 3310:3310 mk0x/docker-clamav
