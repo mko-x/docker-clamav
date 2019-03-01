@@ -19,7 +19,7 @@ ClamAV daemon as a Docker image. It *builds* with a current virus database and
 is listening on exposed port `3310`.
 
 ## Releases
-Find the latest releases at the [releases](https://github.com/mko-x/docker-clamav/releases) section here in the repository.
+Find the latest releases at the official [docker hub](https://hub.docker.com/r/mk0x/docker-clamav) registry.
 
 ## Known Forks
 
