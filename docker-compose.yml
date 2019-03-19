@@ -13,6 +13,7 @@ services:
       - av:av
     depends_on: 
       - mysql
+      - av
     volumes:
       - nextcloud:/var/www/html
     environment:
