@@ -1,5 +1,5 @@
 # example docker-compose configuration file for using mkodockx/docker-clamav
-version: "3"
+version: "3.7"
 services:
   av:
     image: mkodockx/docker-clamav
