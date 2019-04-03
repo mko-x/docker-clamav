@@ -4,6 +4,15 @@
 
 ![ClamAV latest.stable](https://img.shields.io/badge/ClamAV-latest.stable-brightgreen.svg?style=flat-square)
 
+# Optimized
+
+Try the new alpine based version:
+```bash
+    docker run -d -p 3310:3310 mk0x/docker-clamav:alpine
+```
+
+Alpine version reduces foot print to something about 10%.
+
 ## Hub
 Find new hub image: https://cloud.docker.com/repository/docker/mk0x/docker-clamav
 
@@ -26,13 +35,14 @@ Find the latest releases at the official [docker hub](https://hub.docker.com/r/m
 - OpenShift support in [kuanfandevops fork](https://github.com/kuanfandevops/docker-clamav)
 
 ## Usage
-
+```bash
     docker run -d -p 3310:3310 mk0x/docker-clamav
-
+```
 or linked (recommended)
-
+```bash
     docker run -d --name av mk0x/docker-clamav
     docker run -d --link av:av application-with-clamdscan-or-something
+```
     
 ## docker-compose
 
