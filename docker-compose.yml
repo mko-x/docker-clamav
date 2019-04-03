@@ -1,12 +1,15 @@
-# example docker-compose configuration file for using mkodockx/docker-clamav
+# example docker-compose configuration file for using mkodockx/docker-clamav:alpine
 version: '3.7'
 
 services:
 
   av:
-    image: mkodockx/docker-clamav
+    image: mkodockx/docker-clamav:alpine
     container_name: nextav
     restart: unless-stopped
+    volumes:
+      - /srv/opt/clam/conf:/etc/clamav/conf
+      - /srv/opt/clam/store:/store
 
   app:
     image: nextcloud:production
