@@ -4,7 +4,8 @@ version: '3.7'
 services:
 
   av:
-    image: mkodockx/docker-clamav
+    #debian: image: mkodockx/docker-clamav
+    image: mkodockx/docker-clamav:alpine
     container_name: nextav
     restart: unless-stopped
 

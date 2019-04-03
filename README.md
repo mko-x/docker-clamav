@@ -27,6 +27,13 @@ ClamAV daemon as a Docker image. It *builds* with a current virus database and
 *runs* `freshclam` in the background constantly updating the virus signature database. `clamd` itself
 is listening on exposed port `3310`.
 
+# Environment VARs
+
+Thanks to @mchus proxy configuration is possible.
+
+- HTTPProxyServer: Allows to set a proxy server
+- HTTPProxyPort: Allows to set a proxy server port
+
 ## Releases
 Find the latest releases at the official [docker hub](https://hub.docker.com/r/mk0x/docker-clamav) registry.
 
@@ -35,12 +42,20 @@ Find the latest releases at the official [docker hub](https://hub.docker.com/r/m
 - OpenShift support in [kuanfandevops fork](https://github.com/kuanfandevops/docker-clamav)
 
 ## Usage
+
+### Debian (default)
 ```bash
     docker run -d -p 3310:3310 mk0x/docker-clamav
 ```
+
+### Alpine (:alpine)
+```bash
+    docker run -d -p 3310:3310 mk0x/docker-clamav:alpine
+```
+
 or linked (recommended)
 ```bash
-    docker run -d --name av mk0x/docker-clamav
+    docker run -d --name av mk0x/docker-clamav(:alpine)
     docker run -d --link av:av application-with-clamdscan-or-something
 ```
     
