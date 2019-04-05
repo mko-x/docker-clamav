@@ -43,9 +43,14 @@ Find the latest releases at the official [docker hub](https://hub.docker.com/r/m
 
 ## Usage
 
-### Debian (default)
+### Debian Stretch Slim (default, :latest, :stretch-slim)
 ```bash
     docker run -d -p 3310:3310 mk0x/docker-clamav
+```
+
+### Debian Jessie (:stretch-slim)
+```bash
+    docker run -d -p 3310:3310 mk0x/docker-clamav:jessie
 ```
 
 ### Alpine (:alpine)
@@ -53,9 +58,10 @@ Find the latest releases at the official [docker hub](https://hub.docker.com/r/m
     docker run -d -p 3310:3310 mk0x/docker-clamav:alpine
 ```
 
+## Link
 or linked (recommended)
 ```bash
-    docker run -d --name av mk0x/docker-clamav(:alpine)
+    docker run -d --name av mk0x/docker-clamav(:tagname)
     docker run -d --link av:av application-with-clamdscan-or-something
 ```
     
