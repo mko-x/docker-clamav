@@ -1,6 +1,6 @@
 # docker-clamav
 
-![ClamAV Logo](http://www.clamav.net/assets/clamav-trademark.png)
+![ClamAV Logo](https://www.clamav.net/assets/clamav-trademark.png)
 
 ![ClamAV latest.stable](https://img.shields.io/badge/ClamAV-latest.stable-brightgreen.svg?style=flat-square)
 
