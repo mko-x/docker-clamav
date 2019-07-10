@@ -43,7 +43,7 @@ Find the latest releases at the official [docker hub](https://hub.docker.com/r/m
 
 ## Usage
 
-### Debian Stretch Slim (default, :latest, :stretch-slim)
+### Debian Buster Slim (default, :latest, :buster-slim)
 ```bash
     docker run -d -p 3310:3310 mk0x/docker-clamav
 ```
