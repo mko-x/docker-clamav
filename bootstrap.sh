@@ -3,6 +3,9 @@
 # presented by mko (Markus Kosmal<dude@m-ko.de>)
 set -m
 
+# configure freshclam.conf and clamd.conf from env variables if present
+source /envconfig.sh
+
 # start clam service itself and the updater in background as daemon
 freshclam -d &
 clamd &
