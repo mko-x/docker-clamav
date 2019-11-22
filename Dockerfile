@@ -12,7 +12,7 @@ RUN echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION main contrib non-fr
     DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y -qq \
         clamav-daemon \
         clamav-freshclam \
-        libclamunrar7 \
+        libclamunrar9 \
         wget && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
