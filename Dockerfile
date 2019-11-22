@@ -35,6 +35,9 @@ RUN sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/clamd.conf && \
     if ! [ -z $HTTPProxyPort   ]; then echo "HTTPProxyPort $HTTPProxyPort" >> /etc/clamav/freshclam.conf; fi && \
     sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/freshclam.conf
 
+# env based configs - will be called by bootstrap.sh
+ADD envconfig.sh /
+
 # volume provision
 VOLUME ["/var/lib/clamav"]
 
