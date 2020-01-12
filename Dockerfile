@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.11
 LABEL maintainer="Markus Kosmal <dude@m-ko.de> https://m-ko.de"
 
 RUN apk add --no-cache \
