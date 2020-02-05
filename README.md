@@ -6,7 +6,7 @@
 
 # Optimized
 
-Try the new alpine based version:
+Try the alpine based version:
 ```bash
     docker run -d -p 3310:3310 mk0x/docker-clamav:alpine
 ```
