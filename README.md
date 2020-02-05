@@ -5,7 +5,7 @@
 ![ClamAV latest.stable](https://img.shields.io/badge/ClamAV-latest.stable-brightgreen.svg?style=flat-square)
 
 ## Hub
-Find new hub image: https://cloud.docker.com/repository/docker/mk0x/docker-clamav
+Find hub image: https://cloud.docker.com/repository/docker/mk0x/docker-clamav
 
 ## About
 
