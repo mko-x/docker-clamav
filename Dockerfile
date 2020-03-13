@@ -13,6 +13,7 @@ RUN echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION main contrib non-fr
         clamav-daemon \
         clamav-freshclam \
         libclamunrar9 \
+        ca-certificates \
         wget && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
