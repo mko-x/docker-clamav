@@ -14,6 +14,7 @@ RUN echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION main contrib non-fr
         clamav-freshclam \
         libclamunrar9 \
         ca-certificates \
+        netcat-openbsd \
         wget && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -39,6 +40,8 @@ RUN sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/clamd.conf && \
 # env based configs - will be called by bootstrap.sh
 ADD envconfig.sh /
 
+ADD check.sh /
+
 # volume provision
 VOLUME ["/var/lib/clamav"]
 
@@ -48,3 +51,5 @@ EXPOSE 3310
 # av daemon bootstrapping
 ADD bootstrap.sh /
 CMD ["/bootstrap.sh"]
+
+HEALTHCHECK --start-period=500s CMD /check.sh
