@@ -38,9 +38,9 @@ RUN sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/clamd.conf && \
     sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/freshclam.conf
 
 # env based configs - will be called by bootstrap.sh
-ADD envconfig.sh /
+COPY envconfig.sh /
 
-ADD check.sh /
+COPY check.sh /
 
 # volume provision
 VOLUME ["/var/lib/clamav"]
@@ -49,7 +49,7 @@ VOLUME ["/var/lib/clamav"]
 EXPOSE 3310
 
 # av daemon bootstrapping
-ADD bootstrap.sh /
+COPY bootstrap.sh /
 CMD ["/bootstrap.sh"]
 
 HEALTHCHECK --start-period=500s CMD /check.sh
