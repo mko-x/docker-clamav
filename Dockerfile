@@ -1,5 +1,5 @@
 FROM debian:buster-slim
-LABEL maintainer="Markus Kosmal <dude@m-ko.de> https://m-ko.de"
+LABEL maintainer="Markus Kosmal <code@m-ko.de>"
 
 # Debian Base to use
 ENV DEBIAN_VERSION buster
