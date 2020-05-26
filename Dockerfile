@@ -1,21 +1,18 @@
-FROM debian:buster-slim
+FROM ubuntu:focal
 LABEL maintainer="Markus Kosmal <code@m-ko.de>"
 
-# Debian Base to use
-ENV DEBIAN_VERSION buster
+# # Debian Base to use
+# ENV DEBIAN_VERSION buster
 
 # initial install of av daemon
-RUN echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION main contrib non-free" > /etc/apt/sources.list && \
-    echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION-updates main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb http://security.debian.org/ $DEBIAN_VERSION/updates main contrib non-free" >> /etc/apt/sources.list && \
-    apt-get update && \
+RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y -qq \
-        clamav-daemon \
-        clamav-freshclam \
-        libclamunrar9 \
-        ca-certificates \
-        netcat-openbsd \
-        wget && \
+    clamav-daemon \
+    clamav-freshclam \
+    libclamunrar9 \
+    ca-certificates \
+    netcat-openbsd \
+    wget && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
