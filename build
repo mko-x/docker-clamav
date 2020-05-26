@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+#####################################################################
+## HC BuildScript
+##
+## This is intended as a standard build-script for you to modify.
+##
+## It will look for any dockerfiles in your repository and attempt to
+## build the images found therein, as well as pushing them to the
+## google cloud repositories.
+##
+## Usage:
+##
+## ${0} tag1
+##
+#####################################################################
+
+set -aex
+
+## Base for our docker registry (cloud-based)
+# export REGISTRY=us.gcr.io/caremesh-bespin5
+export REGISTRY="us.gcr.io/caremesh-support"
+
+## Make sure we are in the right directory.
+cd "$(dirname "${BASH_SOURCE[0]}")"
+
+## Get the repo name.  We do this like this so that 
+## we get the server's name for the repo, not the 
+## curent directory.  This will also be used to name
+## the docker image.
+export repo=caremesh-clamav
+
+# export repo='hc-registry'
+
+## Make a version number.
+gcloud container images list-tags ${REGISTRY}/${repo} > /tmp/tags.${repo}
+base=$(date +%Y%m%d)
+rev=0
+while grep ${base}-r${rev} /tmp/tags.${repo} >/dev/null; do
+	((rev = rev + 1))
+done
+
+until git tag ${base}-r${rev} 2>&1 > /dev/null
+do
+  ((rev = rev + 1))
+done
+
+VERSION=${base}-r${rev}
+tag="${REGISTRY}/${repo}:latest"
+
+# echo "module.exports.buildNumber = '$VERSION';" >config/buildnumber.js
+
+# Tag this with a revision and push
+git push origin ${VERSION}
+
+docker pull ${tag} || echo "Skipping docker pull"
+docker build . -t ${tag}
+docker push ${tag}
+
+for extratag in  $(git rev-parse --abbrev-ref HEAD | sed -e 's/[^a-zA-Z0-9]/-/g') ${VERSION} $@
+do
+  gcloud container images add-tag ${tag}  "${REGISTRY}/${repo}:${extratag}"  --quiet
+done
+
