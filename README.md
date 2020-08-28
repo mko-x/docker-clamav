@@ -22,7 +22,7 @@ Check out latest alpine-edge version (for latest clamav releases):
 Hint: Take a look at the [alpine-edge readme](https://github.com/mko-x/docker-clamav/tree/alpine-edge) before using.
 
 ## Hub
-Find new hub image at [hub.docker.com](https://hub.docker.com/r/mkodockx/docker-clamav)
+Find the docker hub images at [hub.docker.com](https://hub.docker.com/r/mkodockx/docker-clamav)
 
 ## About
 Dockerized open source antivirus daemons for use with 
