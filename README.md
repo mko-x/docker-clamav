@@ -42,6 +42,10 @@ Thanks to @mchus proxy configuration is possible.
 - HTTPProxyServer: Allows to set a proxy server
 - HTTPProxyPort: Allows to set a proxy server port
 
+Specifying a particular mirror for freshclam is also possible.
+
+- DatabaseMirror: Hostname of the mirror web server.
+
 ## Releases
 Find the latest releases at the official [docker hub](https://hub.docker.com/r/mkodockx/docker-clamav) registry.
 
