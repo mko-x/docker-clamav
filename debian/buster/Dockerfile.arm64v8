@@ -8,7 +8,7 @@ FROM arm64v8/debian:buster-slim as release
 LABEL maintainer="Markus Kosmal <code@m-ko.de>"
 
 # copy qmeu
-COPY --from=qemu qemu-arm-static /usr/bin
+COPY --from=qemu qemu-aarch64-static /usr/bin
 
 # Debian Base to use
 ENV DEBIAN_VERSION buster
