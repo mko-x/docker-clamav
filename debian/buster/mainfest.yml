@@ -1,0 +1,16 @@
+image: mkodockx/docker-clamav:buster-slim
+manifests:
+  - image: mkodockx/docker-clamav:buster-slim-amd64
+    platform:
+      architecture: amd64
+      os: linux
+  - image: mkodockx/docker-clamav:buster-slim-arm64v8
+    platform:
+      architecture: arm64
+      os: linux
+      variant: v8
+  - image: mkodockx/docker-clamav:buster-slim-arm32v7
+    platform:
+      architecture: arm
+      os: linux
+      variant: v7
