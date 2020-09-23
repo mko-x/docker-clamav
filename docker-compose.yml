@@ -2,7 +2,6 @@
 version: '3.7'
 
 services:
-
   av:
     #debian: image: mkodockx/docker-clamav
     image: mkodockx/docker-clamav:alpine
@@ -10,19 +9,15 @@ services:
     restart: unless-stopped
 
   app:
-    image: nextcloud:production
+    image: nextcloud:latest
     container_name: nextapp
     restart: unless-stopped
     env_file:
       - env/app.env
     volumes:
-      - /srv/opt/nextcloud/html:/var/www/html
+      - html:/var/www/html
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-    links:
-      - av:av
-      - db
-      - redis
     depends_on: 
       - av
       - db
@@ -36,7 +31,7 @@ services:
     container_name: nextdb
     restart: unless-stopped
     volumes:
-      - /srv/opt/nextcloud/db:/var/lib/mysql
+      - db:/var/lib/mysql
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     env_file:
       - env/db.env
@@ -45,7 +40,11 @@ services:
     image: redis:alpine
     container_name: nextredis
     restart: unless-stopped
-  
+
+volumes:
+  html:
+  db:
+
 networks:
   outpost_network:
     external: true
