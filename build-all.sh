@@ -1,9 +1,12 @@
 #!/bin/bash
 docker run --rm --privileged multiarch/qemu-user-static:register --reset
 
-if ! [ -z ${1} ] ; then
-  repo=${1}
+if [ -z ${1} ] ; then
+  echo "Repository not set. Provide a repository name in the format 'repo/'"
+  exit 1
 fi
+
+repo=${1}
 
 docker build -t ${repo}docker-clamav:buster-slim-amd64 debian/buster/
 docker build -t ${repo}docker-clamav:buster-slim-armv7 -f debian/buster/Dockerfile.arm32v7 debian/buster/
