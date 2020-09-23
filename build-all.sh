@@ -22,12 +22,27 @@ docker push ${repo}docker-clamav:stretch-slim-amd64
 #docker push ${repo}docker-clamav:stretch-slim-armv7
 docker push ${repo}docker-clamav:stretch-slim-arm64v8
 
+docker build -t ${repo}docker-clamav:alpine-amd64 alpine/main/
+docker build -t ${repo}docker-clamav:alpine-armv7 -f alpine/main/Dockerfile.arm32v7 alpine/main/
+docker build -t ${repo}docker-clamav:alpine-arm64v8 -f alpine/main/Dockerfile.arm64v8 alpine/main/
+
+docker push ${repo}docker-clamav:alpine-amd64
+docker push ${repo}docker-clamav:alpine-armv7
+docker push ${repo}docker-clamav:alpine-arm64v8
+
+docker build -t ${repo}docker-clamav:alpine-edge-amd64 alpine/edge/
+docker build -t ${repo}docker-clamav:alpine-edge-armv7 -f alpine/edge/Dockerfile.arm32v7 alpine/edge/
+docker build -t ${repo}docker-clamav:alpine-edge-arm64v8 -f alpine/edge/Dockerfile.arm64v8 alpine/edge/
+
+docker push ${repo}docker-clamav:alpine-edge-amd64
+docker push ${repo}docker-clamav:alpine-edge-armv7
+docker push ${repo}docker-clamav:alpine-edge-arm64v8
+
 if ! test -f manifest-tool ; then
   curl -Lo manifest-tool https://github.com/estesp/manifest-tool/releases/download/v1.0.3/manifest-tool-linux-amd64
   chmod +x manifest-tool
 fi
 
-#./manifest-tool push from-spec debian/buster/mainfest.yml
 ./manifest-tool push from-args \
     --platforms linux/amd64,linux/arm/v7,linux/arm64/v8 \
     --template ${repo}docker-clamav:buster-slim-ARCHVARIANT \
@@ -37,3 +52,14 @@ fi
     --platforms linux/amd64,linux/arm64/v8 \
     --template ${repo}docker-clamav:stretch-slim-ARCHVARIANT \
     --target ${repo}docker-clamav:stretch-slim
+
+./manifest-tool push from-args \
+    --platforms linux/amd64,linux/arm/v7,linux/arm64/v8 \
+    --template ${repo}docker-clamav:alpine-ARCHVARIANT \
+    --target ${repo}docker-clamav:alpine
+
+./manifest-tool push from-args \
+    --platforms linux/amd64,linux/arm/v7,linux/arm64/v8 \
+    --template ${repo}docker-clamav:alpine-edge-ARCHVARIANT \
+    --target ${repo}docker-clamav:alpine-edge
+    
