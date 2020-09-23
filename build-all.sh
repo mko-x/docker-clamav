@@ -50,6 +50,11 @@ fi
     --platforms linux/amd64,linux/arm/v7,linux/arm64/v8 \
     --template ${repo}docker-clamav:buster-slim-ARCHVARIANT \
     --target ${repo}docker-clamav:buster-slim
+
+./manifest-tool push from-args \
+    --platforms linux/amd64,linux/arm/v7,linux/arm64/v8 \
+    --template ${repo}docker-clamav:buster-slim-ARCHVARIANT \
+    --target ${repo}docker-clamav:latest
     
 ./manifest-tool push from-args \
     --platforms linux/amd64,linux/arm64/v8 \
