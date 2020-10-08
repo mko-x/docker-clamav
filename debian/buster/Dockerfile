@@ -45,7 +45,7 @@ COPY envconfig.sh /
 COPY check.sh /
 
 # volume provision
-VOLUME ["/var/lib/clamav"]
+
 
 # port provision
 EXPOSE 3310
