@@ -42,6 +42,7 @@ docker push ${repo}docker-clamav:alpine-edge-armv7
 docker push ${repo}docker-clamav:alpine-edge-arm64v8
 
 if ! test -f manifest-tool ; then
+  echo Ensure compatible version of manifest tool https://github.com/estesp/manifest-tool
   curl -Lo manifest-tool https://github.com/estesp/manifest-tool/releases/download/v1.0.3/manifest-tool-linux-amd64
   chmod +x manifest-tool
 fi
