@@ -46,7 +46,8 @@ Specifying a particular mirror for freshclam is also possible.
 - DatabaseMirror: Hostname of the mirror web server.
 
 ## Persistency
-Virus update definitions are stored in `/var/lib/clamav`. To store the defintion just mount the directory as a volume, `docker run -d -p 3310:3310 -v ./clamav:/var/lib/clamav mk0x/docker-clamav:alpine`
+Virus update definitions are stored in `/var/lib/clamav`. To store the defintion just mount the directory as a volume, `docker run -d -p 3310:3310 -v ./clamav:/var/lib/clamav mk0x/docker-clamav:latest`
+For `:alpine` images '/store' needs to be mapped.
 
 ## docker-compose
 See example with Nextcloud at [docker-compose.yml](https://github.com/mko-x/docker-clamav/blob/master/docker-compose.yml). You still need to configure the *AntiVirus files* app in Nextcloud.
