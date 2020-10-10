@@ -45,7 +45,7 @@ COPY check.sh /
 COPY bootstrap.sh /
 
 # volume provision
-VOLUME ["/var/lib/clamav"]
+
 
 # port provision
 EXPOSE 3310
