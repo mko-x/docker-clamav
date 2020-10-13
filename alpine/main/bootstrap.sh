@@ -10,7 +10,7 @@ if [ ! -f ${MAIN_FILE} ]; then
 fi
 
 echo "[bootstrap] Schedule freshclam DB updater."
-/usr/bin/freshclam -d -c 6
+/usr/bin/freshclam -d -c 6 &
 
 echo "[bootstrap] Run clamav daemon"
 exec /usr/sbin/clamd
