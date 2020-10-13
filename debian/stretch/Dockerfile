@@ -36,11 +36,13 @@ RUN sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/clamd.conf && \
     sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/freshclam.conf
 
 # volume provision
-VOLUME ["/var/lib/clamav"]
+
 
 # port provision
 EXPOSE 3310
 
 # av daemon bootstrapping
 ADD bootstrap.sh /
+RUN chmod u+x bootstrap.sh
+
 CMD ["/bootstrap.sh"]

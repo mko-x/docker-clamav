@@ -7,8 +7,10 @@ COPY conf /etc/clamav
 COPY bootstrap.sh /
 COPY check.sh /check.sh
 
+RUN chmod u+x bootstrap.sh check.sh
+
 EXPOSE 3310/tcp
-VOLUME ["/store"]
+
 
 CMD ["/bootstrap.sh"]
 

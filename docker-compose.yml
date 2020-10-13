@@ -7,6 +7,8 @@ services:
     image: mkodockx/docker-clamav:alpine
     container_name: nextav
     restart: unless-stopped
+    volumes:
+      - clam:/var/lib/clamav
 
   app:
     image: nextcloud:latest
@@ -44,6 +46,7 @@ services:
 volumes:
   html:
   db:
+  clam:
 
 networks:
   outpost_network:
