@@ -20,14 +20,14 @@ Find the latest releases at the official [docker hub](https://hub.docker.com/r/m
 - buster-slim
 - stretch-slim
 ```bash
-    docker run -d -p 3310:3310 mk0x/docker-clamav:buster-slim
+    docker run -d -p 3310:3310 mkodockx/docker-clamav:buster-slim
 ```
 
 ### Alpine (:alpine, :alpine-edge)
 - alpine
 - alpine-edge
 ```bash
-    docker run -d -p 3310:3310 mk0x/docker-clamav:alpine
+    docker run -d -p 3310:3310 mkodockx/docker-clamav:alpine
 ```
 
 
@@ -46,8 +46,7 @@ Specifying a particular mirror for freshclam is also possible.
 - DatabaseMirror: Hostname of the mirror web server.
 
 ## Persistency
-Virus update definitions are stored in `/var/lib/clamav`. To store the defintion just mount the directory as a volume, `docker run -d -p 3310:3310 -v ./clamav:/var/lib/clamav mk0x/docker-clamav:latest`
-For `:alpine` images '/store' needs to be mapped.
+Virus update definitions are stored in `/var/lib/clamav`. To store the defintion just mount the directory as a volume, `docker run -d -p 3310:3310 -v ./clamav:/var/lib/clamav mkodockx/docker-clamav:latest`
 
 ## docker-compose
 See example with Nextcloud at [docker-compose.yml](https://github.com/mko-x/docker-clamav/blob/master/docker-compose.yml). You still need to configure the *AntiVirus files* app in Nextcloud.

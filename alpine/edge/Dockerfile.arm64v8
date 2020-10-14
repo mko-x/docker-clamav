@@ -15,9 +15,12 @@ RUN apk add --no-cache bash clamav rsyslog wget clamav-libunrar
 
 COPY conf /etc/clamav
 COPY bootstrap.sh /
-COPY check.sh /check.sh
+COPY check.sh /
 
 RUN chmod u+x bootstrap.sh check.sh
+RUN mkdir /var/run/clamav && \
+    chown clamav:clamav /var/run/clamav && \
+    chmod 750 /var/run/clamav
 
 EXPOSE 3310/tcp
 
