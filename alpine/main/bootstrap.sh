@@ -2,7 +2,7 @@
 
 set -eu
 
-MAIN_FILE="/store/main.cvd"
+MAIN_FILE="/var/lib/clamav/main.cvd"
 
 if [ ! -f ${MAIN_FILE} ]; then
     echo "[bootstrap] Initial clam DB download."
@@ -12,5 +12,5 @@ fi
 echo "[bootstrap] Schedule freshclam DB updater."
 /usr/bin/freshclam -d -c 6
 
-echo "[bootstrap] Run clamav daemon"
-exec /usr/sbin/clamd
+echo "[bootstrap] Run clamav daemon..."
+exec /usr/sbin/clamd -c /etc/clamav/clam.conf
