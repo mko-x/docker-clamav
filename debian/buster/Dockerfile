@@ -39,18 +39,19 @@ RUN sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/clamd.conf && \
     if [ -n "$DatabaseMirror"  ]; then echo "ScriptedUpdates off" >> /etc/clamav/freshclam.conf; fi && \
     sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/freshclam.conf
 
+
 # env based configs - will be called by bootstrap.sh
 COPY envconfig.sh /
 COPY check.sh /
 COPY bootstrap.sh /
 
-# volume provision
-
-
 # port provision
 EXPOSE 3310
 
-RUN chmod u+x bootstrap.sh check.sh envconfig.sh
+RUN chown clamav:clamav bootstrap.sh check.sh envconfig.sh && \
+    chmod u+x bootstrap.sh check.sh envconfig.sh    
+
+USER clamav
 
 CMD ["/bootstrap.sh"]
 

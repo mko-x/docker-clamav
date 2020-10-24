@@ -53,13 +53,14 @@ COPY envconfig.sh /
 COPY check.sh /
 COPY bootstrap.sh /
 
-# volume provision
-
-
 # port provision
 EXPOSE 3310
 
-RUN chmod u+x bootstrap.sh check.sh envconfig.sh
+RUN chown clamav:clamav bootstrap.sh check.sh envconfig.sh && \
+    chmod u+x bootstrap.sh check.sh envconfig.sh 
+
+USER clamav
+
 CMD ["/bootstrap.sh"]
 
 HEALTHCHECK --start-period=500s CMD /check.sh
