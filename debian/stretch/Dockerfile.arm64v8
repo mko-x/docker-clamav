@@ -44,14 +44,15 @@ RUN sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/clamd.conf && \
     if ! [ -z $HTTPProxyPort   ]; then echo "HTTPProxyPort $HTTPProxyPort" >> /etc/clamav/freshclam.conf; fi && \
     sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/freshclam.conf
 
-# volume provision
-
-
 # port provision
 EXPOSE 3310
 
-# av daemon bootstrapping
-ADD bootstrap.sh /
-RUN chmod u+x bootstrap.sh
+COPY bootstrap.sh /
+RUN chown clamav:clamav bootstrap.sh && \
+    chmod u+x bootstrap.sh 
+
+USER clamav
 
 CMD ["/bootstrap.sh"]
+
+HEALTHCHECK --start-period=500s CMD /check.sh
