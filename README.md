@@ -16,7 +16,7 @@ is listening on exposed port `3310`.
 Find the latest releases at the official [docker hub](https://hub.docker.com/r/mkodockx/docker-clamav) registry. There are different releases for the different platforms.
 
 # Usage
-### Debian Buster Slim (default, :latest, :buster-slim, :stretch-slim)
+### Debian (default, :latest, :buster-slim, :stretch-slim)
 - buster-slim
 - stretch-slim
 ```bash
@@ -51,8 +51,14 @@ Virus update definitions are stored in `/var/lib/clamav`. To store the defintion
 ## docker-compose
 See example with Nextcloud at [docker-compose.yml](https://github.com/mko-x/docker-clamav/blob/master/docker-compose.yml). You still need to configure the *AntiVirus files* app in Nextcloud.
 
+You can find a tutorial here: https://www.virtualconfusion.net/clamav-for-nextcloud-on-docker/
+
 # Build multi-arch
-`docker build` sample command can be found in the file `build-all.sh`
+This image provides support for different platforms 
+- x86
+- amd64
+- arm32v7
+- arm64v8
 
 # Known Forks
 - OpenShift support in [kuanfandevops fork](https://github.com/kuanfandevops/docker-clamav)
