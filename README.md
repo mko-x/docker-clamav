@@ -53,6 +53,23 @@ See example with Nextcloud at [docker-compose.yml](https://github.com/mko-x/dock
 
 You can find a tutorial here: https://www.virtualconfusion.net/clamav-for-nextcloud-on-docker/
 
+## Healthcheck
+The images provide with `check.sh` a file to check for the healthyness of the running container. To enable the health check configure your `docker run` or `compose file`. The _start period_ should be adjusted to your system needs. Slow internet connection, with limited cpu and IO speed might require larger values.
+
+### docker run
+`docker run --health-cmd=./check.sh --health-start-period=120s --health-interval=60s --health-retries=3 -p 3310:3310 mkodockx/docker-clamav:alpine`
+
+### compose
+```yml
+  services:
+    clamav:
+      healthcheck:
+        test: ["CMD", "./check.sh"]
+        interval: 60s
+        retries: 3
+        start_period: 120s
+```
+
 # Build multi-arch
 This image provides support for different platforms 
 - x86
