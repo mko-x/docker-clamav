@@ -39,11 +39,10 @@ RUN sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/clamd.conf && \
 EXPOSE 3310
 
 COPY bootstrap.sh /
-RUN chown clamav:clamav bootstrap.sh && \
-    chmod u+x bootstrap.sh
+COPY check.sh /
+RUN chown clamav:clamav bootstrap.sh check.sh && \
+    chmod u+x bootstrap.sh check.sh
 
 USER clamav
 
 CMD ["/bootstrap.sh"]
-
-HEALTHCHECK --start-period=500s CMD /check.sh

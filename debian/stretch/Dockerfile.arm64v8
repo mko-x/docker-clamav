@@ -54,5 +54,3 @@ RUN chown clamav:clamav bootstrap.sh && \
 USER clamav
 
 CMD ["/bootstrap.sh"]
-
-HEALTHCHECK --start-period=500s CMD /check.sh
