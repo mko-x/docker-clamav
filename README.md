@@ -16,14 +16,16 @@ is listening on exposed port `3310`.
 Find the latest releases at the official [docker hub](https://hub.docker.com/r/mkodockx/docker-clamav) registry. There are different releases for the different platforms.
 
 # Usage
-### Debian (default, :latest, :buster-slim, :stretch-slim)
+The container run as user `clamav` with `uid=101` and `gid=102`.
+
+## Debian (default, :latest, :buster-slim, :stretch-slim)
 - buster-slim
 - stretch-slim
 ```bash
     docker run -d -p 3310:3310 mkodockx/docker-clamav:buster-slim
 ```
 
-### Alpine (:alpine, :alpine-edge)
+## Alpine (:alpine, :alpine-edge)
 - alpine
 - alpine-edge
 ```bash
@@ -44,6 +46,12 @@ Thanks to @mchus proxy configuration is possible.
 
 Specifying a particular mirror for freshclam is also possible.
 - DatabaseMirror: Hostname of the mirror web server.
+
+### FRESHCLAM_CONF_FILE
+Set the path to a custom `freshclam.conf` file, e.g. `/mnt/myfreshclam.conf`. The file needs to be mounted.
+
+### CLAMD_CONF_FILE
+Set the path to a custom `clam.conf` file, e.g. `/mnt/myclam.conf`. The file needs to be mounted.
 
 ## Persistency
 Virus update definitions are stored in `/var/lib/clamav`. To store the defintion just mount the directory as a volume, `docker run -d -p 3310:3310 -v ./clamav:/var/lib/clamav mkodockx/docker-clamav:latest`
