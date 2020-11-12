@@ -1,7 +1,19 @@
 #!/bin/bash
 # bootstrap clam av service and clam av database updater shell script
 # presented by mko (Markus Kosmal<dude@m-ko.de>)
-set -m
+set -e
+
+if [[ ! -z "${FRESHCLAM_CONF_FILE}" ]]; then
+    echo "[bootstrap] FRESHCLAM_CONF_FILE set, copy to /etc/clamav/freshclam.conf"
+    mv /etc/clamav/freshclam.conf /etc/clamav/freshclam.conf.bak
+    cp -f ${FRESHCLAM_CONF_FILE} /etc/clamav/freshclam.conf
+fi
+
+if [[ ! -z "${CLAMD_CONF_FILE}" ]]; then
+    echo "[bootstrap] CLAMD_CONF_FILE set, copy to /etc/clamav/clam.conf"
+    mv /etc/clamav/clam.conf /etc/clamav/clam.conf.bak
+    cp -f ${FRESHCLAM_CONF_FILE} /etc/clamav/clam.conf
+fi
 
 # start clam service itself and the updater in background as daemon
 freshclam -d &

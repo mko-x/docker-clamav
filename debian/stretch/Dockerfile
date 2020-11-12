@@ -40,7 +40,7 @@ EXPOSE 3310
 
 COPY bootstrap.sh /
 COPY check.sh /
-RUN chown clamav:clamav bootstrap.sh check.sh && \
+RUN chown clamav:clamav bootstrap.sh check.sh && /etc/clamav/clamd.conf /etc/clamav/freshclam.conf \
     chmod u+x bootstrap.sh check.sh
 
 USER clamav
