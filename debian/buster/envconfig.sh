@@ -10,8 +10,8 @@ fi
 
 if [[ ! -z "${CLAMD_CONF_FILE}" ]]; then
     echo "[bootstrap] CLAMD_CONF_FILE set, copy to /etc/clamav/clam.conf"
-    mv /etc/clamav/clam.conf /etc/clamav/clam.conf.bak
-    cp -f ${FRESHCLAM_CONF_FILE} /etc/clamav/clam.conf
+    mv /etc/clamav/clamd.conf /etc/clamav/clamd.conf.bak
+    cp -f ${FRESHCLAM_CONF_FILE} /etc/clamav/clamd.conf
 fi
 
 for OUTPUT in $(env | awk -F "=" '{print $1}' | grep "^CLAMD_CONF_"); do
