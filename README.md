@@ -40,18 +40,20 @@ Linked usage recommended, to not expose the port to "everyone".
 ```
 
 ## Environment VARs
+
+### Proxy
 Thanks to @mchus proxy configuration is possible.
 - HTTPProxyServer: Allows to set a proxy server
 - HTTPProxyPort: Allows to set a proxy server port
 
+### Database Mirror
 Specifying a particular mirror for freshclam is also possible.
 - DatabaseMirror: Hostname of the mirror web server.
 
-### FRESHCLAM_CONF_FILE
-Set the path to a custom `freshclam.conf` file, e.g. `/mnt/myfreshclam.conf`. The file needs to be mounted.
-
-### CLAMD_CONF_FILE
-Set the path to a custom `clam.conf` file, e.g. `/mnt/myclam.conf`. The file needs to be mounted.
+### Custom Configuration Files
+Mount custom configuration files into the container.
+- FRESHCLAM_CONF_FILE: Path to custom `freshclam.conf` file, e.g. `/mnt/freshclam.conf`. 
+- CLAMD_CONF_FILE: Set the path to a custom `clam.conf` file, e.g. `/mnt/clamd.conf`.
 
 ## Persistency
 Virus update definitions are stored in `/var/lib/clamav`. To store the defintion just mount the directory as a volume, `docker run -d -p 3310:3310 -v ./clamav:/var/lib/clamav mkodockx/docker-clamav:latest`
@@ -64,10 +66,19 @@ You can find a tutorial here: https://www.virtualconfusion.net/clamav-for-nextcl
 ## Healthcheck
 The images provide with `check.sh` a file to check for the healthyness of the running container. To enable the health check configure your `docker run` or `compose file`. The _start period_ should be adjusted to your system needs. Slow internet connection, with limited cpu and IO speed might require larger values.
 
-### docker run
-`docker run --health-cmd=./check.sh --health-start-period=120s --health-interval=60s --health-retries=3 -p 3310:3310 mkodockx/docker-clamav:alpine`
 
-### compose
+### Examples
+Via docker run:
+
+```
+docker run --health-cmd=./check.sh \
+            --health-start-period=120s \
+            --health-interval=60s \
+            --health-retries=3 \
+            -p 3310:3310 mkodockx/docker-clamav:alpine`
+```
+
+Via docker-compose
 ```yml
   services:
     clamav:
