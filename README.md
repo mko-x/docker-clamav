@@ -53,7 +53,7 @@ Specifying a particular mirror for freshclam is also possible.
 ### Custom Configuration Files
 Mount custom configuration files into the container.
 - FRESHCLAM_CONF_FILE: Path to custom `freshclam.conf` file, e.g. `/mnt/freshclam.conf`. 
-- CLAMD_CONF_FILE: Set the path to a custom `clam.conf` file, e.g. `/mnt/clamd.conf`.
+- CLAMD_CONF_FILE: Set the path to a custom `clamd.conf` file, e.g. `/mnt/clamd.conf`.
 
 ## Persistency
 Virus update definitions are stored in `/var/lib/clamav`. To store the defintion just mount the directory as a volume, `docker run -d -p 3310:3310 -v ./clamav:/var/lib/clamav mkodockx/docker-clamav:latest`
