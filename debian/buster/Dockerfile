@@ -48,7 +48,7 @@ COPY bootstrap.sh /
 # port provision
 EXPOSE 3310
 
-RUN chown clamav:clamav bootstrap.sh check.sh envconfig.sh /etc/clamav/clamd.conf /etc/clamav/freshclam.conf && \
+RUN chown clamav:clamav bootstrap.sh check.sh envconfig.sh /etc/clamav /etc/clamav/clamd.conf /etc/clamav/freshclam.conf && \
     chmod u+x bootstrap.sh check.sh envconfig.sh    
 
 USER clamav
