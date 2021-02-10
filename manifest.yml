@@ -1,5 +1,5 @@
 ---
 applications:
   - docker:
-      image: quay.io/uktrade/docker-clamav:latest
+      image: gcr.io/sre-docker-registry/github.com/uktrade/docker-clamav:master
   
