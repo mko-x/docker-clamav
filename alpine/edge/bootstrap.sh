@@ -13,6 +13,9 @@ if [[ ! -z "${CLAMD_CONF_FILE}" ]]; then
     cp -f ${CLAMD_CONF_FILE} /etc/clamav/clamd.conf
 fi
 
+if ! [ -z $HTTPProxyServer ]; then echo "HTTPProxyServer $HTTPProxyServer" >> /etc/clamav/freshclam.conf; fi && \
+if ! [ -z $HTTPProxyPort   ]; then echo "HTTPProxyPort $HTTPProxyPort" >> /etc/clamav/freshclam.conf; fi && \
+
 MAIN_FILE="/var/lib/clamav/main.cvd"
 
 if [ ! -f ${MAIN_FILE} ]; then
