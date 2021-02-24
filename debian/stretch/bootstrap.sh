@@ -10,7 +10,7 @@ if [[ ! -z "${FRESHCLAM_CONF_FILE}" ]]; then
 fi
 
 if [[ ! -z "${CLAMD_CONF_FILE}" ]]; then
-    echo "[bootstrap] CLAMD_CONF_FILE set, copy to /etc/clamav/clam.conf"
+    echo "[bootstrap] CLAMD_CONF_FILE set, copy to /etc/clamav/clamd.conf"
     mv /etc/clamav/clamd.conf /etc/clamav/clamd.conf.bak
     cp -f ${CLAMD_CONF_FILE} /etc/clamav/clamd.conf
 fi
