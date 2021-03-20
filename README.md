@@ -127,6 +127,28 @@ If you have an error related to the updates on your special OS, machine, iPad ;)
 
 If you keep on getting errors you might try your own [private local mirror](https://www.clamav.net/documents/private-local-mirrors) easily.
 
-#Thanks
+# Projects
+Several projects are using this image:
+- [solita/clamav-rest](https://github.com/solita/clamav-rest)
+- [r3kzi/clamav-prometheus-exporter](https://github.com/r3kzi/clamav-prometheus-exporter)
+- [US DoD transcom/mymove](https://github.com/transcom/mymove)
+- [Inveniem/nextcloud-azure-aks](https://github.com/Inveniem/nextcloud-azure-aks)
+- [pivotal.io jzheaux/terracotta-bank](https://github.com/jzheaux/terracotta-bank)
+- [Hasso Plattner Institut, Schul Cloud hpi-schul-cloud/antivirus_check_service](https://github.com/hpi-schul-cloud/antivirus_check_service)
+- [UK Government Crown-Commercial-Service/ccs-conclave-document-clamav](https://github.com/Crown-Commercial-Service/ccs-conclave-document-clamav)
+- [UKHomeOffice/file-vault](https://github.com/UKHomeOffice/file-vault)
+- [SICTIAM/stela](https://github.com/SICTIAM/stela)
+- [DeloitteDigitalAT/terracotta-bank](https://github.com/DeloitteDigitalAT/terracotta-bank)
+- [UK ministryofjustice/moj-clamav-rest](https://github.com/ministryofjustice/moj-clamav-rest)
+- [weixian-zhang/Azure-sSFTP](https://github.com/weixian-zhang/Azure-sSFTP)
+- [Mattermost](https://github.com/mattermost/mattermost-plugin-antivirus)
+- [Province of British Columbia, Transportation Fuels Reporting System (TFRS)](https://github.com/bcgov/tfrs)
+- ...
 
-Thank you for using my image. I have only a blink of how many projects are using this, but I know there are several hundreds including big tech, governments and many open source. I try to keep it working in my rare spare time. Feel free to participate or get in contact.
+# Thanks
+
+Thank you for using this image. I have only a blink of how many projects are using this, but I know there are some including big tech, governments and many open source. I try to keep it working in my rare spare time. Feel free to participate or get in contact.
+
+# License
+
+For license see file [LICENSE](./LICENSE)
