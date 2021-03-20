@@ -126,3 +126,7 @@ In the past I ran into these database update errors and spent hours of investiga
 If you have an error related to the updates on your special OS, machine, iPad ;) or anything special else, first check the [FAQ to clamav troubleshooting](https://www.clamav.net/documents/troubleshooting-faq) and then the [virus database FAQ](https://www.clamav.net/documents/clamav-virus-database-faq.html).
 
 If you keep on getting errors you might try your own [private local mirror](https://www.clamav.net/documents/private-local-mirrors) easily.
+
+#Thanks
+
+Thank you for using my image. I have only a blink of how many projects are using this, but I know there are several hundreds including big tech, governments and many open source. I try to keep it working in my rare spare time. Feel free to participate or get in contact.
