@@ -16,7 +16,10 @@ fi
 if ! [ -z $HTTPProxyServer ]; then echo "HTTPProxyServer $HTTPProxyServer" >> /etc/clamav/freshclam.conf; fi && \
 if ! [ -z $HTTPProxyPort   ]; then echo "HTTPProxyPort $HTTPProxyPort" >> /etc/clamav/freshclam.conf; fi && \
 
-MAIN_FILE="/var/lib/clamav/main.cvd"
+DB_DIR=$(sed -n 's/^DatabaseDirectory\s\(.*\)\s*$/\1/p' /etc/clamav/freshclam.conf )
+DB_DIR=${DB_DIR:-'/var/lib/clamav'}
+MAIN_FILE="$DB_DIR/main.cvd"
+echo "[bootstrap] Checking for Clam DB in $MAIN_FILE"
 
 if [ ! -f ${MAIN_FILE} ]; then
     echo "[bootstrap] Initial clam DB download."
