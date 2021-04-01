@@ -33,7 +33,81 @@ The container run as user `clamav` with `uid=101` and `gid=102`.
     docker run -d -p 3310:3310 mkodockx/docker-clamav:alpine
 ```
 
+## Prefer alpine-idb-amd64
 
+Joel Esler from Cisco (main hosts of ClamAV):
+
+**Downloading using other than FreshClam has now been limited.**
+
+
+FreshClam supports the Cdiff system, the cdiff system allows for small micro 
+updates to rebuild your daily.cvd instead of downloading the whole daily.cvd 
+and main.cvd.
+
+Abuse of the download system has forced us to push people towards FreshClam.  
+Unfortunately a handful have ruined it for everyone.  (Looking at you, handful 
+of IPs that download the daily.cvd 3x a second)
+
+We cannot continue to transfer 9PB of traffic a month.
+
+Further enhancements to Freshclam are planned to take advantage of, and handle 
+our mirror infrastructure more politely.  More details will be published about 
+this soon.  In the meantime, please immediately discontinue the use of other 
+command line downloading systems and use FreshClam.
+
+So to clarify:
+
+1. Rate limiting around daily.cvd, main.cvd, and super excessive cdiff 
+downloading is now in place.  If you are getting “429” back from Cloudflare - 
+you are part of the problem.
+2. Use of Wget, Curl, and the link is now severely limited.
+3. Use FreshClam
+4. We’re modifying FreshClam in upcoming releases to deal with this problem 
+better.
+5. See #3
+
+--
+Joel Esler
+Manager, Communities Division
+Cisco Talos Intelligence Group
+http://www.talosintelligence.com | https://www.snort.org
+
+> On Mar 3, 2021, at 9:57 AM, Joel Esler (jesler) via clamav-users 
+> <clamav-users@lists.clamav.net> wrote:
+> 
+> Signed PGP part
+> All —
+> 
+> I’ve had to be more stringent on the rate limiting for the daily.cvd and 
+> main.cvd files.  It seems that some people either have stuck cron jobs (or 
+> are doing it on purpose) and downloading the full file 200k-300k times a day.
+> 
+> We release AV updates once a day, in an emergency slightly more than that.  
+> There is no reason for this.  I’ve had to lower the amount of connections you 
+> are allowed, and raise the amount of time you are blocked.
+> 
+> If you are being blocked with a 429 code from the ClamAV update system, and 
+> you believe your system isn’t broken, and have a valid reason to download 
+> that much.
+> 
+> 1. Feel free to reach out to me via 1:1 or via this list.
+> 2. Consider setting up a local mirror on your network.
+> 
+> Repeat:  You need to be using freshclam, and freshclam only.  It needs to 
+> check the DNS for the presence of an update, and you need to be downloading 
+> the diff files.  There’s no reason to download the full main and daily.
+> 
+> --
+> Joel Esler
+> Manager, Communities Division
+> Cisco Talos Intelligence Group
+> http://www.talosintelligence.com | https://www.snort.org
+> 
+> 
+
+Source: https://www.mail-archive.com/clamav-users@lists.clamav.net/msg49810.html
+
+With alpine-idb-amd64 image you download data just from docker hub not from clamav initially.
 
 Linked usage recommended, to not expose the port to "everyone".
 ```bash
