@@ -27,8 +27,8 @@ The container run as user `clamav` with `uid=101` and `gid=102`.
 
 ## Alpine (:alpine, :alpine-edge, :alpine-main-idb-amd64)
 - alpine
+- alpine-idb-amd64 (initialized databases, [more info](alpine/main-idb/README.md))
 - alpine-edge
-- alpine-main-idb-amd64 (initialized databases, [more info](alpine/main-idb/README.md))
 ```bash
     docker run -d -p 3310:3310 mkodockx/docker-clamav:alpine
 ```
