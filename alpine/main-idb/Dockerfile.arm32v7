@@ -12,12 +12,14 @@ COPY --from=qemu qemu-arm-static /usr/bin
 
 USER root
 
-# initial database download at build time
-RUN apk add --no-cache curl
-RUN curl -o /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd && \
-    curl -o /var/lib/clamav/daily.cvd http://database.clamav.net/daily.cvd && \
-    curl -o /var/lib/clamav/bytecode.cvd http://database.clamav.net/bytecode.cvd && \
-    chown clamav:clamav /var/lib/clamav/*.cvd
+# initial database initialization at build time
+COPY ./main.cvd  /var/lib/clamav/main.cvd
+COPY ./daily.cvd  /var/lib/clamav/daily.cvd
+COPY ./bytecode.cvd  /var/lib/clamav/bytecode.cvd
+COPY ./safebrowsing.cvd  /var/lib/clamav/safebrowsing.cvd
+
+# permission juggling
+RUN chown clamav:clamav /var/lib/clamav/*.cvd
 
 EXPOSE 3310/tcp
 
