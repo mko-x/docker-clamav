@@ -195,13 +195,15 @@ It is obvious that an antivirus engine based on virus signatures will raise memo
 ## Error during DB update
 Several users are experiencing problems during the database updates (incremental,diff,initial).
 
-ClamaV is open source and the databases are provided by a network of mirrors that are hosted for free by some folks to support open source antivirus.
-
-In the past I ran into these database update errors and spent hours of investigation, just to find it working the next hour or the other day. Please think about race conditions, proxy or network misconfiguration and update cycles within the clamav update mirrors - **BEFORE(!)** opening an issue here. 
+ClamaV is open source and the databases are provided by a network of mirrors that are hosted for free by some folks (Cisco) to support open source antivirus. That was about 9 PB a month. That is why downloads are now protected by Cloudflare. If you're downloading too often you will recieve 429 errors. (See ## Prefer alpine-idb-amd64 at the top of this document)
 
 If you have an error related to the updates on your special OS, machine, iPad ;) or anything special else, first check the [FAQ to clamav troubleshooting](https://www.clamav.net/documents/troubleshooting-faq) and then the [virus database FAQ](https://www.clamav.net/documents/clamav-virus-database-faq.html).
 
 If you keep on getting errors you might try your own [private local mirror](https://www.clamav.net/documents/private-local-mirrors) easily.
+
+### alpine-idb-amd64
+
+If you have problems with freshclam downloads use the alpine image with initialized dbs. [more info](alpine/main-idb/README.md)
 
 # Projects
 Several projects are using this image:
