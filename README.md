@@ -228,7 +228,6 @@ Several projects are using this image:
 
 Thank you for using this image. I have only a blink of how many projects are using this, but I know there are some including big tech, governments and many open source. I try to keep it working in my rare spare time. Feel free to participate or get in contact.
 
-You may donate for a tea via PayPal at dude@m-ko.de
 
 # License
 
