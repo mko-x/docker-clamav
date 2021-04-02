@@ -12,8 +12,6 @@ ClamAV daemon as a Docker image. It *builds* with a current virus database and
 *runs* `freshclam` in the background constantly updating the virus signature database. `clamd` itself
 is listening on exposed port `3310`.
 
-This image only serves the clamav daemon, which is not available via http but binary via tcp api. For usage via http we recommend using a REST proxy like [clamav-rest](https://github.com/solita/clamav-rest).
-
 # Releases
 Find the latest releases at the official [docker hub](https://hub.docker.com/r/mkodockx/docker-clamav) registry. There are different releases for the different platforms.
 
@@ -223,11 +221,11 @@ Several projects are using this image:
 - [weixian-zhang/Azure-sSFTP](https://github.com/weixian-zhang/Azure-sSFTP)
 - [Mattermost](https://github.com/mattermost/mattermost-plugin-antivirus)
 - [Province of British Columbia, Transportation Fuels Reporting System (TFRS)](https://github.com/bcgov/tfrs)
+- ...
 
 # Thanks
 
 Thank you for using this image. I have only a blink of how many projects are using this, but I know there are some including big tech, governments and many open source. I try to keep it working in my rare spare time. Feel free to participate or get in contact.
-
 
 # License
 
