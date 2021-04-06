@@ -16,11 +16,10 @@ The databases were downloaded just before the build manually as Cloudflares rate
 Due to it may be possible to bypass the limits somehow I decided to create an image with databases preloaded.
 
 You can find the timestamps within the databasefiles:
-
-main.cvd - ClamAV-VDB:25 Nov 2019 08-56 -0500
-daily.cvd - ClamAV-VDB:31 Mar 2021 07-24 -0400
-bytecode.cvd - ClamAV-VDB:08 Mar 2021 10-21 -0500
-safebrowsing.cvd - ClamAV-VDB:10 Nov 2019 19-03 -0500
+- main.cvd - ClamAV-VDB:25 Nov 2019 08-56 -0500
+- daily.cvd - ClamAV-VDB:31 Mar 2021 07-24 -0400
+- bytecode.cvd - ClamAV-VDB:08 Mar 2021 10-21 -0500
+- safebrowsing.cvd - ClamAV-VDB:10 Nov 2019 19-03 -0500
 
 ## GitHub.com size limits
 Github.com has a maximum filesize of 100 MB.
