@@ -6,6 +6,7 @@
 Dockerized open source antivirus daemons for use with 
 - file sharing containers like [Nextcloud](https://hub.docker.com/_/nextcloud/) or 
 - to use it via a [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) proxy like [@solita](https://github.com/solita) made [clamav-rest](https://github.com/solita/clamav-rest) or
+- to check files on a server via e.g. node.js [kylefarris/clamscan](https://github.com/kylefarris/clamscan)
 - to directly connect to *clamav* via TCP port `3310`
 
 ClamAV daemon as a Docker image. It *builds* with a current virus database and
