@@ -10,7 +10,7 @@ LABEL maintainer="Markus Kosmal <code@m-ko.de>"
 # copy qmeu
 COPY --from=qemu qemu-aarch64-static /usr/bin
 
-RUN apk add --no-cache bash clamav rsyslog wget clamav-libunrar
+RUN apk add --no-cache bash clamav clamav-libunrar
 
 COPY conf /etc/clamav
 COPY bootstrap.sh /
