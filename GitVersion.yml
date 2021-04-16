@@ -1,0 +1,3 @@
+#see https://gitversion.net/ for docs
+mode: ContinuousDeployment
+next-version: 1.0.0
