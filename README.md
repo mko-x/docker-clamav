@@ -3,6 +3,8 @@
 
 ![ClamAV latest.stable](https://img.shields.io/badge/ClamAV-latest.stable-brightgreen.svg?style=flat-square)
 
+[![CI-Build](https://github.com/mko-x/docker-clamav/actions/workflows/build-and-push.yml/badge.svg)](https://github.com/mko-x/docker-clamav/actions/workflows/build-and-push.yml)
+
 Dockerized open source antivirus daemons for use with 
 - file sharing containers like [Nextcloud](https://hub.docker.com/_/nextcloud/) or 
 - to use it via a [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) proxy like [@solita](https://github.com/solita) made [clamav-rest](https://github.com/solita/clamav-rest) or
