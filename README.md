@@ -16,6 +16,8 @@ is listening on exposed port `3310`.
 # Releases
 Find the latest releases at the official [docker hub](https://hub.docker.com/r/mkodockx/docker-clamav) registry. There are different releases for the different platforms.
 
+With special thanks to [@WhiteBahamut](https://github.com/WhiteBahamut) you will find versioned builds to pin to for production use at docker hub.
+
 # Usage
 The container run as user `clamav` with `uid=101` and `gid=102`.
 
