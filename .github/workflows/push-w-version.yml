@@ -26,13 +26,13 @@ jobs:
           fetch-depth: 0
       
       - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v0.9.4
+        uses: gittools/actions/gitversion/setup@v0.9.9
         with:
           versionSpec: '5.x'
         
       - name: Use GitVersion
         id: gitversion # step id used as reference for output values
-        uses: gittools/actions/gitversion/execute@v0.9.4
+        uses: gittools/actions/gitversion/execute@v0.9.9
         
       - name: Docker Setup QEMU
         # You may pin to the exact commit or the version.
@@ -53,8 +53,8 @@ jobs:
         uses: docker/build-push-action@v2.0.1
         with:
           tags: |
-            whitebahamut/docker-clamav:${{ steps.gitversion.outputs.semVer }}-alpine            
-            whitebahamut/docker-clamav:alpine
+            mkodockx/docker-clamav:${{ steps.gitversion.outputs.semVer }}-alpine            
+            mkodockx/docker-clamav:alpine
           file: ./alpine/main/Dockerfile
           context: ./alpine/main
           platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
