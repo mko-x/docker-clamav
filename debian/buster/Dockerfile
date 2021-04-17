@@ -20,10 +20,10 @@ RUN echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION main contrib non-fr
     rm -rf /var/lib/apt/lists/*
 
 # initial update of av databases
-RUN wget -O /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd && \
+RUN { wget -O /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd && \
     wget -O /var/lib/clamav/daily.cvd http://database.clamav.net/daily.cvd && \
     wget -O /var/lib/clamav/bytecode.cvd http://database.clamav.net/bytecode.cvd && \
-    chown clamav:clamav /var/lib/clamav/*.cvd
+    chown clamav:clamav /var/lib/clamav/*.cvd } || { echo DB Initialisation failed }
 
 # permission juggling
 RUN mkdir /var/run/clamav && \
