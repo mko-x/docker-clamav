@@ -15,12 +15,16 @@ if [[ ! -z "${CLAMD_CONF_FILE}" ]]; then
 fi
 
 for OUTPUT in $(env | awk -F "=" '{print $1}' | grep "^CLAMD_CONF_"); do
+    test "$OUTPUT" = "CLAMD_CONF_FILE" && continue  # skip configuration file variable
+
     TRIMMED="${OUTPUT/CLAMD_CONF_/}"
     grep -q "^$TRIMMED " /etc/clamav/clamd.conf && sed "s/^$TRIMMED .*/$TRIMMED ${!OUTPUT}/" -i /etc/clamav/clamd.conf ||
         sed "$ a\\$TRIMMED ${!OUTPUT}" -i /etc/clamav/clamd.conf
 done
 
 for OUTPUT in $(env | awk -F "=" '{print $1}' | grep "^FRESHCLAM_CONF_"); do
+    test "$OUTPUT" = "FRESHCLAM_CONF_FILE" && continue  # skip configuration file variable
+
     TRIMMED="${OUTPUT/FRESHCLAM_CONF_/}"
     grep -q "^$TRIMMED " /etc/clamav/freshclam.conf && sed "s/^$TRIMMED .*/$TRIMMED ${!OUTPUT}/" -i /etc/clamav/freshclam.conf ||
         sed "$ a\\$TRIMMED ${!OUTPUT}" -i /etc/clamav/freshclam.conf
