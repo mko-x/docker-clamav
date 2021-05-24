@@ -1,7 +1,7 @@
 FROM alpine:edge
 LABEL maintainer="https://mko-x.github.io/docker-clamav/"
 
-RUN apk add --no-cache bash clamav rsyslog wget clamav-libunrar
+RUN apk add --no-cache bash clamav clamav-libunrar
 
 COPY conf /etc/clamav
 COPY bootstrap.sh /
