@@ -44,7 +44,7 @@ It works out of the box, even if there is no internet connection at startup time
 
 ## History
 
-See #103 for more reasons.
+See [#103](https://github.com/mko-x/docker-clamav/issues/103) for more reasons.
 
 ## ARM architectures
 
