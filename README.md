@@ -114,11 +114,17 @@ Source: https://www.mail-archive.com/clamav-users@lists.clamav.net/msg49810.html
 
 With alpine-idb-amd64 image you download data just from docker hub not from clamav initially.
 
-Linked usage recommended, to not expose the port to "everyone".
+## Linkage (deprecated)
+Linked usage was recommended, to not expose the port to "everyone". Now it is legacy and will be removed some time. Use networks instead.
 ```bash
     docker run -d --name av mkodockx/docker-clamav(:alpine)
     docker run -d --link av:av application-with-clamdscan-or-something
 ```
+## Networks
+
+There are several possibilities to use the network configuration. Out of the box the host network should fit your needs to connect any client to the ClamAV daemon.
+
+If you need more information, follow instructions at [docker manuals](https://docs.docker.com/network/).
 
 ## Environment VARs
 
