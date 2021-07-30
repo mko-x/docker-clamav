@@ -15,9 +15,33 @@ if [[ ! -z "${CLAMD_CONF_FILE}" ]]; then
     cp -f ${CLAMD_CONF_FILE} /etc/clamav/clamd.conf
 fi
 
-# start clam service itself and the updater in background as daemon
-freshclam -d &
+# Start clamd service in background
 clamd &
+
+# Based on https://superuser.com/a/917073/66341
+# Note `test -S` because clamd.ctl is a socket
+wait_file() {
+  local file="$1"; shift
+  local wait_seconds="${1:-10}"; shift # 10 seconds as default timeout
+
+  echo "Waiting $wait_seconds for $file"
+
+  until test $((wait_seconds--)) -eq 0 -o -S "$file" ; 
+  do
+    sleep 1
+  done
+  
+  ((++wait_seconds))
+}
+
+LOCKFILE=/var/run/clamav/clamd.ctl
+wait_file "$LOCKFILE" 60 || {
+    >&2 echo "$LOCKFILE not found after waiting for 60 seconds. There may be issues with updating virus defs"
+}
+
+# Start the updater in background as daemon
+echo "Starting freshclam"
+freshclam -d &
 
 # recognize PIDs
 pidlist=`jobs -p`
