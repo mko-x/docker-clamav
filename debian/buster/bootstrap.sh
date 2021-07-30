@@ -3,7 +3,15 @@
 # presented by mko (Markus Kosmal<dude@m-ko.de>)
 set -m
 
+<<<<<<< HEAD:bootstrap.sh
 # start clam service in background
+=======
+# configure freshclam.conf and clamd.conf from env variables if present
+source /envconfig.sh
+
+# start clam service itself and the updater in background as daemon
+freshclam -d &
+>>>>>>> upstream/master:debian/buster/bootstrap.sh
 clamd &
 
 # https://superuser.com/a/917073/66341
@@ -31,7 +39,7 @@ echo "Starting freshclam"
 freshclam -d &
 
 # recognize PIDs
-pidlist=`jobs -p`
+pidlist=$(jobs -p)
 
 # initialize latest result var
 latest_exit=0
@@ -41,13 +49,13 @@ function shutdown() {
     trap "" SIGINT
 
     for single in $pidlist; do
-        if ! kill -0 $single 2>/dev/null; then
-            wait $single
+        if ! kill -0 "$single" 2> /dev/null; then
+            wait "$single"
             latest_exit=$?
         fi
     done
 
-    kill $pidlist 2>/dev/null
+    kill "$pidlist" 2> /dev/null
 }
 
 # run shutdown
