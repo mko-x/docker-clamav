@@ -3,11 +3,14 @@
 # presented by mko (Markus Kosmal<dude@m-ko.de>)
 set -m
 
-# start clam service in background
+# Configure freshclam.conf and clamd.conf from env variables if present
+source /envconfig.sh
+
+# Start clamd service in background
 clamd &
 
-# https://superuser.com/a/917073/66341
-# but using -S because clamd.ctl is a socket and -f doesn't work!
+# Based on https://superuser.com/a/917073/66341
+# Note `test -S` because clamd.ctl is a socket
 wait_file() {
   local file="$1"; shift
   local wait_seconds="${1:-10}"; shift # 10 seconds as default timeout
@@ -27,11 +30,12 @@ wait_file "$LOCKFILE" 60 || {
     >&2 echo "$LOCKFILE not found after waiting for 60 seconds. There may be issues with updating virus defs"
 }
 
+# Start the updater in background as daemon
 echo "Starting freshclam"
 freshclam -d &
 
 # recognize PIDs
-pidlist=`jobs -p`
+pidlist=$(jobs -p)
 
 # initialize latest result var
 latest_exit=0
@@ -41,13 +45,13 @@ function shutdown() {
     trap "" SIGINT
 
     for single in $pidlist; do
-        if ! kill -0 $single 2>/dev/null; then
-            wait $single
+        if ! kill -0 "$single" 2> /dev/null; then
+            wait "$single"
             latest_exit=$?
         fi
     done
 
-    kill $pidlist 2>/dev/null
+    kill "$pidlist" 2> /dev/null
 }
 
 # run shutdown

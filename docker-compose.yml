@@ -1,42 +1,53 @@
 # example docker-compose configuration file for using mkodockx/docker-clamav
-version: "3"
+version: '3.7'
+
 services:
   av:
-    image: mkodockx/docker-clamav
-    networks:
-      - backend
+    #debian: image: mkodockx/docker-clamav
+    image: mkodockx/docker-clamav:alpine
+    container_name: nextav
+    restart: unless-stopped
+    volumes:
+      - clam:/var/lib/clamav
 
   app:
-    image: nextcloud:fpm-alpine
-    restart: always
-    links:
-      - av:av
-    depends_on: 
-      - mysql
+    image: nextcloud:latest
+    container_name: nextapp
+    restart: unless-stopped
+    env_file:
+      - env/app.env
     volumes:
-      - nextcloud:/var/www/html
-    environment:
-      MYSQL_HOST: mysql
-      MYSQL_DATABASE: nextcloud
-      MYSQL_USER: nextcloud
-      MYSQL_PASSWORD: 
-    ports:
-      - 8080:80
+      - html:/var/www/html
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    depends_on: 
+      - av
+      - db
+      - redis
     networks:
-      - backend
-      - frontend
-
-  mysql:
+      outpost_network:
+      default:
+      
+  db:
     image: mariadb
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: nextcloud
-      MYSQL_USER: nextcloud
-      MYSQL_PASSWORD: 
-    networks:
-      - backend
+    container_name: nextdb
+    restart: unless-stopped
+    volumes:
+      - db:/var/lib/mysql
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    env_file:
+      - env/db.env
+
+  redis:
+    image: redis:alpine
+    container_name: nextredis
+    restart: unless-stopped
+
+volumes:
+  html:
+  db:
+  clam:
 
 networks:
-  backend:
-  frontend:
+  outpost_network:
+    external: true

@@ -1,0 +1,28 @@
+FROM alpine AS qemu
+
+#QEMU Download
+ENV QEMU_URL https://github.com/balena-io/qemu/releases/download/v3.0.0%2Bresin/qemu-3.0.0+resin-arm.tar.gz
+RUN apk add curl && curl -L ${QEMU_URL} | tar zxvf - -C . --strip-components 1
+
+FROM mkodockx/docker-clamav as release
+LABEL maintainer="Markus Kosmal <code@m-ko.de>"
+
+# copy qmeu
+COPY --from=qemu qemu-arm-static /usr/bin
+
+USER root
+
+# initial database initialization at build time
+COPY ./main.cvd  /var/lib/clamav/main.cvd
+COPY ./daily.cvd  /var/lib/clamav/daily.cvd
+COPY ./bytecode.cvd  /var/lib/clamav/bytecode.cvd
+COPY ./safebrowsing.cvd  /var/lib/clamav/safebrowsing.cvd
+
+# permission juggling
+RUN chown clamav:clamav /var/lib/clamav/*.cvd
+
+EXPOSE 3310/tcp
+
+USER clamav
+
+CMD ["/bootstrap.sh"]
