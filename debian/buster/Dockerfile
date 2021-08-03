@@ -45,7 +45,11 @@ RUN sed -i 's/^MaxScanSize .*$/MaxScanSize 4000M/g' /etc/clamav/clamd.conf && \
     sed -i 's/^StreamMaxLength .*$/StreamMaxLength 4000M/g' /etc/clamav/clamd.conf
 
 # Block encrypted files
-RUN sed -i 's/^AlertEncrypted .*$/AlertEncrypted true/g' /etc/clamav/clamd.conf
+# NB: The automatically generated (by clamav-daemon postinst) clamd.conf
+#     that we update here contains the *old* setting name, so we attempt to
+#     update both versions of the setting.
+RUN sed -i 's/^ArchiveBlockEncrypted .*$/AlertEncrypted true/g' /etc/clamav/clamd.conf && \
+    sed -i 's/^AlertEncrypted .*$/AlertEncrypted true/g' /etc/clamav/clamd.conf
 
 # env based configs - will be called by bootstrap.sh
 COPY envconfig.sh /
