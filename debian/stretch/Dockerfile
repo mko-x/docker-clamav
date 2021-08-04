@@ -13,6 +13,7 @@ RUN echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION main contrib non-fr
         clamav-daemon \
         clamav-freshclam \
         libclamunrar9 \
+        ca-certificates \
         wget && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -41,10 +42,11 @@ RUN sed -i 's/^MaxScanSize .*$/MaxScanSize 4000M/g' /etc/clamav/clamd.conf && \
     sed -i 's/^StreamMaxLength .*$/StreamMaxLength 4000M/g' /etc/clamav/clamd.conf
 
 # Block encrypted files
-RUN sed -i 's/^ArchiveBlockEncrypted .*$/ArchiveBlockEncrypted true/g' /etc/clamav/clamd.conf
-
-# volume provision
-VOLUME ["/var/lib/clamav"]
+# NB: The automatically generated (by clamav-daemon postinst) clamd.conf
+#     that we update here contains the *old* setting name, so we attempt to
+#     update both versions of the setting.
+RUN sed -i 's/^ArchiveBlockEncrypted .*$/AlertEncrypted true/g' /etc/clamav/clamd.conf && \
+    sed -i 's/^AlertEncrypted .*$/AlertEncrypted true/g' /etc/clamav/clamd.conf
 
 # port provision
 EXPOSE 3310

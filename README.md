@@ -15,6 +15,45 @@ ClamAV daemon as a Docker image. It *builds* with a current virus database and
 *runs* `freshclam` in the background constantly updating the virus signature database. `clamd` itself
 is listening on exposed port `3310`.
 
+# DIT Fork
+This is a fork created by the UK Department for International Trade with the following specialisations:
+
+## Dockerfile
+
+### Image creation
+- Installation of missing `ca-certificates` in Debian/stretch to avoid SSL CA cert path errors.
+
+### Custom configuration
+- MaxScanSize
+- MaxFileSize
+- StreamMaxLength
+- AlertEncrypted (block encrypted files).
+
+## Modified bootstrap
+
+### Initial foreground run of freshclam
+This fork has modified Debian/stretch and Debian/buster bootstraps. The virus definition
+database is stored in `/var/lib/clamav` and is initially empty, populated by `freshclam`.
+We run `freshclam` in the foreground first time to avoid the container exiting
+while the `main.cvd`, `daily.cld` and `bytecode.cvd` databases are downloaded.
+Good reasons for doing this are:
+
+- It follows the recommendation to use `freshclam` for definition update.
+- Avoids a two-step image build requiring uncommenting the "initial update of av databases"
+  section of the Dockerfile.
+- Avoids having to rebuild the image if the volume is inadvertently removed.
+
+> It is strongly recommended to use `-v clamdb:/var/lib/clamav` option with `docker run`
+> command to persist the definitions and avoid a database download every time the
+> container starts, e.g:
+>
+> `docker run -p 3310:3310 -v clamdb:/var/lib/clamav ukti/docker-clamav:latest`
+
+### Wait for clamd readiness
+Additionally, after `clamd` background invocation the script waits up to 60
+seconds for `clamd`'s socket file to appear in `/var/run/clamav/clamd.ctl`
+indicating its ready state for `freshclam` notifications.
+
 # Releases
 Find the latest releases at the official [docker hub](https://hub.docker.com/r/mkodockx/docker-clamav) registry. There are different releases for the different platforms.
 
