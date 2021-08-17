@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+ FROM debian:buster-slim
 LABEL maintainer="Markus Kosmal <code@m-ko.de>"
 
 # Debian Base to use
@@ -19,12 +19,11 @@ RUN echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION main contrib non-fr
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# initial update of av databases
-# disabled - see https://github.com/mko-x/docker-clamav#prefer-alpine-idb-amd64
-#RUN { wget -O /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd && \
-#    wget -O /var/lib/clamav/daily.cvd http://database.clamav.net/daily.cvd && \
-#    wget -O /var/lib/clamav/bytecode.cvd http://database.clamav.net/bytecode.cvd && \
-#    chown clamav:clamav /var/lib/clamav/*.cvd } || { echo DB Initialisation failed }
+# Initial update of av databases from DIT mirror
+RUN wget -O /var/lib/clamav/main.cvd http://dit-clamav-mirror1.s3-website.eu-west-2.amazonaws.com/main.cvd && \
+    wget -O /var/lib/clamav/daily.cvd http://dit-clamav-mirror1.s3-website.eu-west-2.amazonaws.com/daily.cvd && \
+    wget -O /var/lib/clamav/bytecode.cvd http://dit-clamav-mirror1.s3-website.eu-west-2.amazonaws.com/bytecode.cvd && \
+    chown clamav:clamav /var/lib/clamav/*.cvd
 
 # permission juggling
 RUN mkdir /var/run/clamav && \

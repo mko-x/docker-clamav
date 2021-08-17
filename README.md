@@ -35,7 +35,7 @@ This is a fork created by the UK Department for International Trade with the fol
 This fork has modified Debian/stretch and Debian/buster bootstraps. The virus definition
 database is stored in `/var/lib/clamav` and is initially empty, populated by `freshclam`.
 We run `freshclam` in the foreground first time to avoid the container exiting
-while the `main.cvd`, `daily.cld` and `bytecode.cvd` databases are downloaded.
+while the `main.cvd`, `daily.cvd` and `bytecode.cvd` databases are downloaded.
 Good reasons for doing this are:
 
 - It follows the recommendation to use `freshclam` for definition update.
@@ -48,6 +48,12 @@ Good reasons for doing this are:
 > container starts, e.g:
 >
 > `docker run -p 3310:3310 -v clamdb:/var/lib/clamav ukti/docker-clamav:latest`
+
+However...
+
+> Persistent volumes are unavailable in our PaaS infra so we seed the docker image
+> with recent CVD files, this is achieved in `debian/buster` and `debian/stretch`
+> contexts by getting initial files from an S3 mirror.
 
 ### Wait for clamd readiness
 Additionally, after `clamd` background invocation the script waits up to 60

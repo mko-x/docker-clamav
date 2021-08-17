@@ -1,3 +1,7 @@
 manifest-tool
 alpine/main-idb/daily.cvd
 alpine/main-idb/main.cvd
+debian/buster/database/daily.cvd
+debian/buster/database/main.cvd
+debian/stretch/database/daily.cvd
+debian/stretch/database/main.cvd
