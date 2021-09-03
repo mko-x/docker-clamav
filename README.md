@@ -1,6 +1,6 @@
 # docker-clamav
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ![ClamAV Logo](https://www.clamav.net/assets/clamav-trademark.png)
 
@@ -265,6 +265,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://kaiser.me"><img src="https://avatars.githubusercontent.com/u/238631?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nico Kaiser</b></sub></a><br /><a href="https://github.com/mko-x/docker-clamav/commits?author=nicokaiser" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/scholzie"><img src="https://avatars.githubusercontent.com/u/6815040?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chris Scholz</b></sub></a><br /><a href="https://github.com/mko-x/docker-clamav/commits?author=scholzie" title="Code">💻</a></td>
+    <td align="center"><a href="http://mohamedsahbi.com"><img src="https://avatars.githubusercontent.com/u/25180044?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mohamed Sahbi</b></sub></a><br /><a href="https://github.com/mko-x/docker-clamav/commits?author=MohamedSahbi" title="Code">💻</a></td>
   </tr>
 </table>
 
