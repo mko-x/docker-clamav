@@ -255,6 +255,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://ericmason.net"><img src="https://avatars.githubusercontent.com/u/17150?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eric Mason</b></sub></a><br /><a href="https://github.com/mko-x/docker-clamav/commits?author=ericmason" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.peterdavehello.org/"><img src="https://avatars.githubusercontent.com/u/3691490?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Peter Dave Hello</b></sub></a><br /><a href="https://github.com/mko-x/docker-clamav/commits?author=PeterDaveHello" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/eht16"><img src="https://avatars.githubusercontent.com/u/617017?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Enrico Tröger</b></sub></a><br /><a href="https://github.com/mko-x/docker-clamav/commits?author=eht16" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/WhiteBahamut"><img src="https://avatars.githubusercontent.com/u/38832027?v=4?s=100" width="100px;" alt=""/><br /><sub><b>WhiteBahamut</b></sub></a><br /><a href="https://github.com/mko-x/docker-clamav/commits?author=WhiteBahamut" title="Code">💻</a></td>
   </tr>
 </table>
 
