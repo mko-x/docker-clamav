@@ -254,6 +254,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
+    <td align="center"><a href="https://github.com/DavidJFowler"><img src="https://avatars.githubusercontent.com/u/10775668?v=4?s=100" width="100px;" alt=""/><br /><sub><b>DavidJFowler</b></sub></a><br /><a href="https://github.com/mko-x/docker-clamav/commits?author=DavidJFowler" title="Code">💻</a></td>
     <td align="center"><a href="http://ericmason.net"><img src="https://avatars.githubusercontent.com/u/17150?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eric Mason</b></sub></a><br /><a href="https://github.com/mko-x/docker-clamav/commits?author=ericmason" title="Code">💻</a></td>
     <td align="center"><a href="https://www.peterdavehello.org/"><img src="https://avatars.githubusercontent.com/u/3691490?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Peter Dave Hello</b></sub></a><br /><a href="https://github.com/mko-x/docker-clamav/commits?author=PeterDaveHello" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/eht16"><img src="https://avatars.githubusercontent.com/u/617017?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Enrico Tröger</b></sub></a><br /><a href="https://github.com/mko-x/docker-clamav/commits?author=eht16" title="Code">💻</a></td>

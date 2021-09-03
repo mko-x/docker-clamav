@@ -6,6 +6,15 @@
   "commit": false,
   "contributors": [
     {
+      "login": "DavidJFowler",
+      "name": "DavidJFowler",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10775668?v=4",
+      "profile": "https://github.com/DavidJFowler",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "ericmason",
       "name": "Eric Mason",
       "avatar_url": "https://avatars.githubusercontent.com/u/17150?v=4",
