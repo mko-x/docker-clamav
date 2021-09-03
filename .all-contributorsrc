@@ -76,6 +76,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "scholzie",
+      "name": "Chris Scholz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6815040?v=4",
+      "profile": "https://github.com/scholzie",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
