@@ -13,6 +13,24 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "eht16",
+      "name": "Enrico Tröger",
+      "avatar_url": "https://avatars.githubusercontent.com/u/617017?v=4",
+      "profile": "https://github.com/eht16",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "WhiteBahamut",
+      "name": "WhiteBahamut",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38832027?v=4",
+      "profile": "https://github.com/WhiteBahamut",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
