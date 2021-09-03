@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.14
 LABEL maintainer="Markus Kosmal <code@m-ko.de>"
 
 RUN apk add --no-cache bash clamav clamav-daemon clamav-libunrar
