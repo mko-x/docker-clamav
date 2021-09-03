@@ -13,6 +13,42 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ericmason",
+      "name": "Eric Mason",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17150?v=4",
+      "profile": "http://ericmason.net",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "PeterDaveHello",
+      "name": "Peter Dave Hello",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3691490?v=4",
+      "profile": "https://www.peterdavehello.org/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "eht16",
+      "name": "Enrico Tröger",
+      "avatar_url": "https://avatars.githubusercontent.com/u/617017?v=4",
+      "profile": "https://github.com/eht16",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "WhiteBahamut",
+      "name": "WhiteBahamut",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38832027?v=4",
+      "profile": "https://github.com/WhiteBahamut",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
