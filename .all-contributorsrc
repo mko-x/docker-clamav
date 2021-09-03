@@ -94,6 +94,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "scp-mb",
+      "name": "scp-mb",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52526733?v=4",
+      "profile": "https://github.com/scp-mb",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
