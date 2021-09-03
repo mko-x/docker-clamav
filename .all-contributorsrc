@@ -112,6 +112,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "bushong1",
+      "name": "Charles Bushong",
+      "avatar_url": "https://avatars.githubusercontent.com/u/236700?v=4",
+      "profile": "https://github.com/bushong1",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
