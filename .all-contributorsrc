@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "mchus",
+      "name": "Mikhail Chus",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2232148?v=4",
+      "profile": "https://github.com/mchus",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "docker-clamav",
+  "projectOwner": "mko-x",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
