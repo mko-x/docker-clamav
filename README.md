@@ -1,6 +1,6 @@
 # docker-clamav
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ![ClamAV Logo](https://www.clamav.net/assets/clamav-trademark.png)
 
@@ -274,6 +274,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="http://codelobe.io"><img src="https://avatars.githubusercontent.com/u/6046654?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Adam Beck</b></sub></a><br /><a href="https://github.com/mko-x/docker-clamav/commits?author=adam-beck" title="Code">💻</a></td>
     <td align="center"><a href="https://alicef.me"><img src="https://avatars.githubusercontent.com/u/107572?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alice Ferrazzi</b></sub></a><br /><a href="https://github.com/mko-x/docker-clamav/commits?author=aliceinwire" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/timopick"><img src="https://avatars.githubusercontent.com/u/8996684?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Timo Pick</b></sub></a><br /><a href="https://github.com/mko-x/docker-clamav/commits?author=timopick" title="Code">💻</a></td>
   </tr>
 </table>
 
