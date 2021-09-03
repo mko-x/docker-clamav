@@ -85,6 +85,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "MohamedSahbi",
+      "name": "Mohamed Sahbi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25180044?v=4",
+      "profile": "http://mohamedsahbi.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
