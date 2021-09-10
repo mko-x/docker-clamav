@@ -12,16 +12,34 @@ if ! [ -z $HTTPProxyPort   ]; then echo "HTTPProxyPort $HTTPProxyPort" >> /etc/c
 DB_DIR=$(sed -n 's/^DatabaseDirectory\s\(.*\)\s*$/\1/p' /etc/clamav/freshclam.conf )
 DB_DIR=${DB_DIR:-'/var/lib/clamav'}
 MAIN_FILE="$DB_DIR/main.cvd"
-echo "[bootstrap] Checking for Clam DB in $MAIN_FILE"
 
-if [ ! -f ${MAIN_FILE} ]; then
-    echo "[bootstrap] Initial clam DB download."
-    /usr/bin/freshclam
+function clam_start () {
+    if [[ ! -e /var/run/clamav/created ]]
+    then
+        touch /var/run/clamav/created
+    fi
+    freshclam -d &
+    echo -e "waiting for clam to update..."
+    until [[ -e ${MAIN_FILE} ]]
+    do
+        :
+    done
+    echo -e "starting clamd..."
+    clamd &
+}
+
+if [[ ! -z "${CLAM_DELAY}" ]]
+then
+    if [[ ! -z "${DELAY_CREATE_ONLY}" && -e /var/run/clamav/created ]]
+    then
+        clam_start
+    else
+        echo -e "waiting for ${CLAM_DELAY} before starting clamav..."
+        sleep ${CLAM_DELAY} && clam_start
+    fi
+else
+    clam_start
 fi
-
-# start clam service itself and the updater in background as daemon
-freshclam -d &
-clamd &
 
 # recognize PIDs
 pidlist=$(jobs -p)
