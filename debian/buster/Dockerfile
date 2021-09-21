@@ -50,6 +50,12 @@ RUN sed -i 's/^MaxScanSize .*$/MaxScanSize 4000M/g' /etc/clamav/clamd.conf && \
 RUN sed -i 's/^ArchiveBlockEncrypted .*$/AlertEncrypted true/g' /etc/clamav/clamd.conf && \
     sed -i 's/^AlertEncrypted .*$/AlertEncrypted true/g' /etc/clamav/clamd.conf
 
+# Remove any existing DatabaseMirror lines and add our local mirror
+RUN sed -i '/^DatabaseMirror/d' /etc/clamav/freshclam.conf && \
+    echo "ScriptedUpdates false" >> /etc/clamav/freshclam.conf && \
+    echo "DatabaseMirror clamav-mirror-staging.london.cloudapps.digital" >> /etc/clamav/freshclam.conf
+
+
 # env based configs - will be called by bootstrap.sh
 COPY envconfig.sh /
 COPY check.sh /
