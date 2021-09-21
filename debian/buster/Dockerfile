@@ -19,12 +19,6 @@ RUN echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION main contrib non-fr
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Initial update of av databases from DIT mirror
-RUN wget -O /var/lib/clamav/main.cvd http://dit-clamav-mirror1.s3-website.eu-west-2.amazonaws.com/main.cvd && \
-    wget -O /var/lib/clamav/daily.cvd http://dit-clamav-mirror1.s3-website.eu-west-2.amazonaws.com/daily.cvd && \
-    wget -O /var/lib/clamav/bytecode.cvd http://dit-clamav-mirror1.s3-website.eu-west-2.amazonaws.com/bytecode.cvd && \
-    chown clamav:clamav /var/lib/clamav/*.cvd
-
 # permission juggling
 RUN mkdir /var/run/clamav && \
     chown clamav:clamav /var/run/clamav && \
@@ -43,6 +37,9 @@ RUN sed -i 's/^MaxScanSize .*$/MaxScanSize 4000M/g' /etc/clamav/clamd.conf && \
     sed -i 's/^MaxFileSize .*$/MaxFileSize 4000M/g' /etc/clamav/clamd.conf && \
     sed -i 's/^StreamMaxLength .*$/StreamMaxLength 4000M/g' /etc/clamav/clamd.conf
 
+# enable verbose logging
+#RUN sed -i 's/^LogVerbose .*$/LogVerbose true/g' /etc/clamav/clamd.conf
+
 # Block encrypted files
 # NB: The automatically generated (by clamav-daemon postinst) clamd.conf
 #     that we update here contains the *old* setting name, so we attempt to
@@ -50,21 +47,17 @@ RUN sed -i 's/^MaxScanSize .*$/MaxScanSize 4000M/g' /etc/clamav/clamd.conf && \
 RUN sed -i 's/^ArchiveBlockEncrypted .*$/AlertEncrypted true/g' /etc/clamav/clamd.conf && \
     sed -i 's/^AlertEncrypted .*$/AlertEncrypted true/g' /etc/clamav/clamd.conf
 
-# Remove any existing DatabaseMirror lines and add our local mirror
-RUN sed -i '/^DatabaseMirror/d' /etc/clamav/freshclam.conf && \
-    echo "ScriptedUpdates false" >> /etc/clamav/freshclam.conf && \
-    echo "DatabaseMirror dit-clamav-mirror1.s3-website.eu-west-2.amazonaws.com" >> /etc/clamav/freshclam.conf
-
 # env based configs - will be called by bootstrap.sh
 COPY envconfig.sh /
 COPY check.sh /
 COPY bootstrap.sh /
+COPY custom-bootstrap.sh /
 
 # port provision
 EXPOSE 3310
 
-RUN chown clamav:clamav bootstrap.sh check.sh envconfig.sh /etc/clamav /etc/clamav/clamd.conf /etc/clamav/freshclam.conf && \
-    chmod u+x bootstrap.sh check.sh envconfig.sh    
+RUN chown clamav:clamav bootstrap.sh check.sh envconfig.sh /etc/clamav /etc/clamav/clamd.conf /etc/clamav/freshclam.conf custom-bootstrap.sh && \
+    chmod u+x bootstrap.sh check.sh envconfig.sh custom-bootstrap.sh 
 
 USER clamav
 
