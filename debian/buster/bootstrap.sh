@@ -5,6 +5,7 @@ set -m  # job control
 
 # Configure freshclam.conf and clamd.conf from env variables if present
 source /envconfig.sh
+source /custom-bootstrap.sh
 
 # Check if this is a first time run
 # The virus definition database is stored in ``/var/lib/clamav``.
