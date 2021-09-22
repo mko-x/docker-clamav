@@ -18,12 +18,6 @@ RUN echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION main contrib non-fr
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Initial update of av databases from DIT mirror
-RUN wget -O /var/lib/clamav/main.cvd http://dit-clamav-mirror1.s3-website.eu-west-2.amazonaws.com/main.cvd && \
-    wget -O /var/lib/clamav/daily.cvd http://dit-clamav-mirror1.s3-website.eu-west-2.amazonaws.com/daily.cvd && \
-    wget -O /var/lib/clamav/bytecode.cvd http://dit-clamav-mirror1.s3-website.eu-west-2.amazonaws.com/bytecode.cvd && \
-    chown clamav:clamav /var/lib/clamav/*.cvd
-
 # permission juggling
 RUN mkdir /var/run/clamav && \
     chown clamav:clamav /var/run/clamav && \
@@ -52,8 +46,9 @@ EXPOSE 3310
 
 COPY bootstrap.sh /
 COPY check.sh /
-RUN chown clamav:clamav bootstrap.sh check.sh /etc/clamav /etc/clamav/clamd.conf /etc/clamav/freshclam.conf && \
-    chmod u+x bootstrap.sh check.sh
+COPY custom-bootstrap.sh /
+RUN chown clamav:clamav bootstrap.sh check.sh /etc/clamav /etc/clamav/clamd.conf /etc/clamav/freshclam.conf custom-bootstrap.sh && \
+    chmod u+x bootstrap.sh check.sh custom-bootstrap.sh
 
 USER clamav
 

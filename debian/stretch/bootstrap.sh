@@ -3,6 +3,8 @@
 # presented by mko (Markus Kosmal<dude@m-ko.de>)
 set -m  # job control
 
+source /custom-bootstrap.sh
+
 if [[ ! -z "${FRESHCLAM_CONF_FILE}" ]]; then
     echo "[bootstrap] FRESHCLAM_CONF_FILE set, copy to /etc/clamav/freshclam.conf"
     mv /etc/clamav/freshclam.conf /etc/clamav/freshclam.conf.bak
