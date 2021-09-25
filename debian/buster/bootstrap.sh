@@ -6,9 +6,40 @@ set -m
 # configure freshclam.conf and clamd.conf from env variables if present
 source /envconfig.sh
 
-# start clam service itself and the updater in background as daemon
-freshclam -d &
-clamd &
+if ! [ -z $HTTPProxyServer ]; then echo "HTTPProxyServer $HTTPProxyServer" >> /etc/clamav/freshclam.conf; fi && \
+if ! [ -z $HTTPProxyPort   ]; then echo "HTTPProxyPort $HTTPProxyPort" >> /etc/clamav/freshclam.conf; fi && \
+
+DB_DIR=$(sed -n 's/^DatabaseDirectory\s\(.*\)\s*$/\1/p' /etc/clamav/freshclam.conf )
+DB_DIR=${DB_DIR:-'/var/lib/clamav'}
+MAIN_FILE="$DB_DIR/main.cvd"
+
+function clam_start () {
+    if [[ ! -e /var/run/clamav/created ]]
+    then
+        touch /var/run/clamav/created
+    fi
+    freshclam -d &
+    echo -e "waiting for clam to update..."
+    until [[ -e ${MAIN_FILE} ]]
+    do
+        :
+    done
+    echo -e "starting clamd..."
+    clamd &
+}
+
+if [[ ! -z "${CLAM_DELAY}" ]]
+then
+    if [[ ! -z "${DELAY_CREATE_ONLY}" && -e /var/run/clamav/created ]]
+    then
+        clam_start
+    else
+        echo -e "waiting for ${CLAM_DELAY} before starting clamav..."
+        sleep ${CLAM_DELAY} && clam_start
+    fi
+else
+    clam_start
+fi
 
 # recognize PIDs
 pidlist=$(jobs -p)
