@@ -13,6 +13,12 @@ DB_DIR=$(sed -n 's/^DatabaseDirectory\s\(.*\)\s*$/\1/p' /etc/clamav/freshclam.co
 DB_DIR=${DB_DIR:-'/var/lib/clamav'}
 MAIN_FILE="$DB_DIR/main.cvd"
 
+# if /var/lib/clamav/ doesn't have the virus database..
+if [ ! -f "$MAIN_FILE" ] && [ -f /var/lib/clamav.source/main.cvd ]; then
+  # ..initialize it using the database we shipped in the docker image
+  cp /var/lib/clamav.source/*.cvd "$DB_DIR"
+fi
+
 function clam_start () {
     if [[ ! -e /var/run/clamav/created ]]
     then
