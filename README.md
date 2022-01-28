@@ -1,6 +1,6 @@
 # Official docker images of clamav
 
-The development of this image will be discontinued. Since [0.104](https://github.com/Cisco-Talos/clamav/blob/main/NEWS.md#01040) Cisco provides official docker images for clamav. This image here will be on hold an supported as long as possible.
+The development of this image will be discontinued. Since [0.104](https://github.com/Cisco-Talos/clamav/blob/main/NEWS.md#01040) Cisco provides official docker images for clamav. This image here will be on hold and supported as long as possible.
 
 At the moment we are faced with unexpected disconnects during database updates. This might be due to changes in the database download handling from the clamav servers.
 
