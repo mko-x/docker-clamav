@@ -1,3 +1,4 @@
 #see https://gitversion.net/ for docs
 mode: Mainline
-next-version: 1.0.9
+next-version: 1.1.0
+# will be the last supported version
