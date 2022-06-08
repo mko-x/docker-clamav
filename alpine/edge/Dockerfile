@@ -1,4 +1,4 @@
-FROM alpine:20220316
+FROM alpine:20220328
 LABEL maintainer="https://mko-x.github.io/docker-clamav/"
 
 RUN apk add --no-cache bash clamav clamav-libunrar
