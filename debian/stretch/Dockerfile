@@ -7,12 +7,14 @@ ENV DEBIAN_VERSION trixie
 # initial install of av daemon
 RUN echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION main contrib non-free" > /etc/apt/sources.list && \
     echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION-updates main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb http://security.debian.org/ $DEBIAN_VERSION/updates main contrib non-free" >> /etc/apt/sources.list && \
+    echo "deb http://security.debian.org/debian-security bookworm-security main contrib non-free" >> /etc/apt/sources.list && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y -qq \
+        clamav \
         clamav-daemon \
         clamav-freshclam \
-        libclamunrar9 \
+        libclamav11 \
+        libclamunrar11 \
         ca-certificates \
         wget && \
     apt-get clean && \
