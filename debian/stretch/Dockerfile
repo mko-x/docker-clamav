@@ -1,4 +1,3 @@
-# FROM debian:stretch-slim
 FROM debian:trixie-slim
 LABEL maintainer="Markus Kosmal <code@m-ko.de>"
 
