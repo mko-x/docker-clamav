@@ -2,4 +2,6 @@
 applications:
   - docker:
       image: gcr.io/sre-docker-registry/github.com/uktrade/docker-clamav:master
-    stack: cflinuxfs4  
+    stack: cflinuxfs4i
+    buildpacks:
+      - https://github.com/cloudfoundry/python-buildpack.git
